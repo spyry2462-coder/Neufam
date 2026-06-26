@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-black text-gray-100 selection:bg-[#bf80ff]/30 selection:text-[#bf80ff]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEU CLAN // ƇȤ・FAMILY HUB</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        mono: ['Share Tech Mono', 'monospace'],
+                    },
+                    colors: {
+                        cyber: {
+                            black: '#000000',
+                            dark: '#020202',
+                            gray: '#0c0c12',
+                            purple: '#bf80ff',
+                            red: '#ff3333',
+                            blue: '#00f0ff'
+                        }
+                    },
+                    boxShadow: {
+                        'neon-purple': '0 0 15px rgba(191, 128, 255, 0.4), 0 0 30px rgba(191, 128, 255, 0.2)',
+                        'neon-red': '0 0 15px rgba(255, 51, 51, 0.4)',
+                        'neon-input': 'inset 0 0 10px rgba(191, 128, 255, 0.2), 0 0 15px rgba(191, 128, 255, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Cybernetic Scanlines and Layout Correction */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        .neon-text-purple {
+            text-shadow: 0 0 10px rgba(191,128,255,0.7), 0 0 20px rgba(191,128,255,0.4);
+        }
+        .neon-text-red {
+            text-shadow: 0 0 10px rgba(255,51,51,0.7), 0 0 20px rgba(255,51,51,0.4);
+        }
+
+        /* Fluid Killfeed Removals */
+        .killfeed-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 100px;
+        }
+        .killfeed-item.removing {
+            height: 0 !important;
+            max-height: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            opacity: 0 !important;
+            transform: translateX(-50px);
+        }
+
+        /* Scrollbar Core Modification */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020202;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bf80ff;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="font-orbitron tracking-wide overflow-x-hidden text-gray-300">
+
+    <div id="passkey-screen" class="fixed inset-0 bg-black z-[10000] flex flex-col items-center justify-center p-4 font-mono select-none">
+        <div class="w-full max-w-2xl border border-zinc-800 bg-cyber-dark/90 backdrop-blur-md p-6 rounded-lg relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#bf80ff] to-transparent animate-pulse"></div>
+            
+            <div class="flex items-center justify-between border-b border-zinc-800 pb-3 mb-4 text-xs text-zinc-500">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-cyber-purple animate-ping"></span>
+                    SECURE INTERACTION TERMINAL v4.81
+                </span>
+                <span>SYS_STATUS: ENCRYPTED</span>
+            </div>
+
+            <div id="terminal-logs" class="h-44 overflow-y-auto text-sm text-zinc-400 space-y-1 scrollbar-none leading-relaxed"></div>
+
+            <div id="passkey-gate" class="opacity-0 mt-6 pt-6 border-t border-zinc-800 flex flex-col items-center justify-center space-y-4">
+                <p class="text-xs text-cyber-purple tracking-widest uppercase font-orbitron font-semibold">Decryption Key Required</p>
+                <div class="relative w-full max-w-sm">
+                    <input type="password" id="passkey-input" placeholder="ENTER PASSKEY" 
+                           class="w-full bg-black/60 border border-cyber-purple/40 rounded px-4 py-3 text-center text-[#bf80ff] font-mono tracking-widest uppercase placeholder-zinc-700 focus:outline-none focus:border-cyber-purple focus:shadow-neon-input transition-all duration-300">
+                </div>
+                <button id="decrypt-btn" class="w-full max-w-sm bg-gradient-to-r from-zinc-900 via-[#bf80ff]/20 to-zinc-900 border border-cyber-purple/50 rounded py-3 text-xs font-orbitron font-bold tracking-widest text-white hover:from-[#bf80ff]/30 hover:to-[#bf80ff]/30 transition-all duration-300 transform active:scale-95 shadow-lg shadow-cyber-purple/10">
+                    DECRYPT ACCESS
+                </button>
+                <p id="error-msg" class="text-xs text-cyber-red opacity-0 transition-opacity font-mono"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="main-content" class="opacity-0 min-h-screen flex flex-col relative bg-[#020202]">
+
+        <section id="home-view" class="relative w-full min-h-screen flex flex-col justify-between items-center z-10">
+            <canvas id="hero-canvas" class="absolute inset-0 w-full h-full object-cover pointer-events-auto z-0"></canvas>
+            
+            <header class="w-full max-w-7xl px-6 py-6 flex justify-between items-center z-20 mix-blend-screen">
+                <div class="flex flex-col">
+                    <h1 class="text-xl md:text-2xl font-black text-white tracking-tighter">NEU <span class="text-cyber-purple text-sm font-light font-mono block tracking-widest">CLAN // REGIME</span></h1>
+                </div>
+                <div class="text-right text-xs font-mono text-zinc-500">
+                    <div>COLLAB: <span class="text-white font-bold font-orbitron">ƇȤ・FAMILY</span></div>
+                    <div class="animate-pulse">ONLINE SYNC // SECURE</div>
+                </div>
+            </header>
+
+            <div class="w-full max-w-7xl px-6 flex flex-col justify-center items-start flex-grow z-20 select-none pointer-events-none mt-12 md:mt-0">
+                <div class="space-y-4 max-w-3xl pointer-events-auto">
+                    <div class="inline-block border border-cyber-purple/30 bg-cyber-purple/5 px-3 py-1 rounded text-[10px] text-cyber-purple font-mono uppercase tracking-widest">
+                        CODM Global Operation Squad
+                    </div>
+                    <h2 class="text-5xl md:text-8xl font-black text-white leading-none tracking-tight font-orbitron">
+                        THE NEXT <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#bf80ff] via-white to-zinc-600 neon-text-purple">EVOLUTION</span>
+                    </h2>
+                </div>
+
+                <nav class="flex flex-col md:flex-row gap-6 md:gap-16 mt-12 w-full border-t border-zinc-800/60 pt-8 pointer-events-auto">
+                    <a href="#roster-anchor" class="nav-large-link group flex flex-col">
+                        <span class="text-xs font-mono text-zinc-500 group-hover:text-cyber-purple transition-colors">01 / TEAM PROFILE</span>
+                        <span class="text-2xl md:text-4xl font-black text-white tracking-wide transition-all group-hover:text-cyber-purple">DOMINATE</span>
+                    </a>
+                    <a href="#weapon-anchor" class="nav-large-link group flex flex-col">
+                        <span class="text-xs font-mono text-zinc-500 group-hover:text-cyber-purple transition-colors">02 / LOADOUT SPEC</span>
+                        <span class="text-2xl md:text-4xl font-black text-white tracking-wide transition-all group-hover:text-cyber-purple">EQUIP</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="switchToRules()" class="nav-large-link group flex flex-col">
+                        <span class="text-xs font-mono text-zinc-500 group-hover:text-cyber-red transition-colors">03 / CODE & ENGAGEMENT</span>
+                        <span class="text-2xl md:text-4xl font-black text-white tracking-wide transition-all group-hover:text-cyber-red">TACTICAL</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="w-full max-w-7xl px-6 py-8 border-t border-zinc-900 z-20 grid grid-cols-2 md:grid-cols-4 gap-4 text-[11px] font-mono text-zinc-500 mix-blend-screen bg-black/40 backdrop-blur-sm rounded-t-xl">
+                <div>
+                    <span class="block text-zinc-600">INFRASTRUCTURE</span>
+                    <span class="text-white">CORE WEBGL ENGINE v2.0</span>
+                </div>
+                <div>
+                    <span class="block text-zinc-600">GEO LOCATIONS</span>
+                    <span class="text-white">GLOBAL CALL OF DUTY MOBILE</span>
+                </div>
+                <div>
+                    <span class="block text-zinc-600">CLAN OPERATIVES</span>
+                    <span class="text-cyber-purple font-bold">10 ELITE CLASSIFIED</span>
+                </div>
+                <div>
+                    <span class="block text-zinc-600">MATCH PROTOCOL</span>
+                    <span class="text-cyber-red font-bold">CZ COMPETITIVE BANS ACT</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full bg-cyber-black py-20 px-6 border-t border-zinc-900 relative">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 flex flex-col items-center justify-center relative bg-cyber-gray/40 border border-zinc-800 p-8 rounded-2xl shadow-xl overflow-hidden group">
+                    <div class="absolute top-2 left-4 text-[10px] font-mono text-zinc-600">SYS_MODULE: RADAR_SCANNER</div>
+                    
+                    <div class="w-72 h-72 md:w-80 md:h-80 rounded-full border border-cyber-purple/30 relative flex items-center justify-center overflow-hidden bg-black/60 shadow-neon-purple/5">
+                        
+                        <div class="absolute inset-0 origin-center rounded-full" 
+                             style="background: conic-gradient(from 0deg, rgba(191, 128, 255, 0.15) 0deg, rgba(191, 128, 255, 0) 90deg); animation: radar-sweep 4s linear infinite;">
+                        </div>
+
+                        <div class="absolute w-3/4 h-3/4 border border-dashed border-cyber-purple/20 rounded-full"></div>
+                        <div class="absolute w-1/2 h-1/2 border border-zinc-800 rounded-full"></div>
+                        <div class="absolute w-1/4 h-1/4 border border-zinc-900 rounded-full"></div>
+                        
+                        <div class="absolute top-0 bottom-0 left-1/2 w-[1px] bg-zinc-800/60"></div>
+                        <div class="absolute left-0 right-0 top-1/2 h-[1px] bg-zinc-800/60"></div>
+
+                        <div class="absolute w-2 h-2 rounded-full bg-cyber-red top-1/4 left-1/3 animate-ping"></div>
+                        <div class="absolute w-1.5 h-1.5 rounded-full bg-cyber-purple top-1/2 right-1/4 animate-pulse"></div>
+                        <div class="absolute w-2 h-2 rounded-full bg-cyber-blue bottom-1/3 left-1/2 animate-pulse"></div>
+                    </div>
+
+                    <div class="w-full mt-6 grid grid-cols-3 gap-2 text-center text-[10px] font-mono text-zinc-500">
+                        <div class="bg-black/40 p-2 border border-zinc-900 rounded">
+                            <span class="block text-zinc-600">RANGE</span>
+                            <span class="text-white text-xs">842 KM/S</span>
+                        </div>
+                        <div class="bg-black/40 p-2 border border-zinc-900 rounded">
+                            <span class="block text-zinc-600">TARGETS</span>
+                            <span class="text-cyber-red text-xs font-bold">03 DETECT</span>
+                        </div>
+                        <div class="bg-black/40 p-2 border border-zinc-900 rounded">
+                            <span class="block text-zinc-600">SWEEP FLUX</span>
+                            <span class="text-cyber-purple text-xs">99.82%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="killfeed-anchor" class="lg:col-span-7 flex flex-col h-[420px] bg-cyber-dark border border-zinc-900 rounded-2xl p-6 relative overflow-hidden shadow-2xl">
+                    <div class="flex items-center justify-between border-b border-zinc-800 pb-3 mb-4">
+                        <div class="flex items-center gap-2 text-xs font-mono tracking-widest text-zinc-400">
+                            <span class="w-2 h-2 rounded-full bg-cyber-red animate-pulse"></span>
+                            LIVE ACTION IN-GAME FEED
+                        </div>
+                        <span class="text-[10px] font-mono text-zinc-600">SERVER STATUS: BROADCASTING</span>
+                    </div>
+
+                    <div id="killfeed-container" class="flex flex-col justify-end flex-grow overflow-hidden space-y-3 font-mono text-sm">
+                        </div>
+                </div>
+
+            </div>
+        </section>
+
+        <span id="roster-anchor" class="block -mt-12 pt-12"></span>
+        <section class="w-full bg-[#050508] py-24 px-6 border-t border-zinc-900 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col space-y-2 mb-16">
+                    <span class="text-xs font-mono text-cyber-purple uppercase tracking-widest">// BATTLE ORDER MATRIX</span>
+                    <h3 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase">CLAN ROSTER DETAILED MANIFEST</h3>
+                    <div class="w-24 h-[2px] bg-cyber-purple"></div>
+                </div>
+
+                <div id="roster-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                    </div>
+            </div>
+        </section>
+
+        <div id="dossier-modal" class="fixed inset-0 z-[11000] hidden bg-black/80 backdrop-blur-xl flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+            <div class="bg-cyber-gray border border-cyber-purple/50 w-full max-w-2xl rounded-2xl overflow-hidden p-6 relative shadow-2xl transform scale-95 transition-transform duration-300">
+                <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyber-purple via-cyber-red to-cyber-blue"></div>
+                
+                <button id="modal-close" class="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors font-mono text-lg p-2">&times; CLOSE</button>
+                
+                <div id="dossier-content" class="space-y-6">
+                    </div>
+            </div>
+        </div>
+
+        <span id="weapon-anchor" class="block -mt-12 pt-12"></span>
+        <section class="w-full bg-cyber-black py-24 px-6 border-t border-zinc-900 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col space-y-2 mb-16 items-center text-center">
+                    <span class="text-xs font-mono text-cyber-red uppercase tracking-widest">// COMBAT HARDWARE INTERNALS</span>
+                    <h3 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase">NEU SYSTEM SIGNATURE BLUEPRINTS</h3>
+                    <div class="w-24 h-[2px] bg-cyber-red"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-purple/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-[#bf80ff]/10 text-cyber-purple px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">LONG RANGE ARCHITECTURE</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: META 01</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">DL Q33 — TECH SNIPER V2</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">MIP Light Advance</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">YKM Combat Stock</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">PERK:</span> <span class="text-cyber-purple font-bold">FMJ (Heavy Penetration)</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">LASER:</span> <span class="text-white font-bold">OWC Laser - Tactical</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-zinc-400">Standard Kinetic Caliber</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-purple block font-bold mb-1">// SYSTEM CALIBRATION LOG</span>
+                            Engineered explicitly for zero-delay hit scanning and maximum armor-piercing index parameters inside long-range professional CODM tournament circuits.
+                        </div>
+                    </div>
+
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-red/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-cyber-red/10 text-cyber-red px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">SLAYER ARCHITECTURE</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: META 02</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">QQ9 // KILO 141 SYSTEM</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">OWC Ranger / Marksman Spec</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">No Stock / RTC Steady Component</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">LASER:</span> <span class="text-white font-bold">OWC Laser - Tactical Matrix</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">MAGAZINE:</span> <span class="text-cyber-red font-bold">Extended Fast Reload System</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">REAR GRIP:</span> <span class="text-white font-bold">Granulated Grip Tape</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-red block font-bold mb-1">// SYSTEM CALIBRATION LOG</span>
+                            Calibrated to secure unmatched TTK ratios, dynamic horizontal drift stabilization vector parameters, and optimized ADS handling limits during close-quarters operations.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    <div id="rules-view" class="hidden min-h-screen bg-cyber-dark py-24 px-6 relative z-10 opacity-0 transition-all duration-500">
+        <div class="max-w-5xl mx-auto">
+            
+            <!-- Rules Beautiful Header with Dedicated Holographic Tactical Shader Canvas -->
+            <div class="relative w-full rounded-2xl overflow-hidden border border-zinc-800/80 bg-black/80 p-8 md:p-12 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 shadow-2xl min-h-[220px]">
+                <canvas id="rules-canvas" class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 opacity-80"></canvas>
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 z-0"></div>
+                
+                <div class="relative z-10 flex-grow">
+                    <span class="text-xs font-mono text-cyber-red tracking-widest block mb-2">// ƇȤ・FAMILY & NEU CLAN MUTUAL ACCORD</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-white font-orbitron uppercase tracking-tight neon-text-red">COMPREHENSIVE COMPETITIVE WAR RESTRICTIONS</h2>
+                </div>
+                <div class="relative z-10 text-xs font-mono text-zinc-400 border border-zinc-800/80 p-4 rounded bg-cyber-dark/95 backdrop-blur-md shadow-lg min-w-[200px]">
+                    DOCUMENT REF: <span class="text-white font-bold">CZ-NEU-REGS-2026</span><br>
+                    SECURITY STATUS: <span class="text-cyber-red font-bold animate-pulse">BINDING RULES</span>
+                </div>
+            </div>
+
+            <div class="space-y-8 font-mono text-sm leading-relaxed text-zinc-300">
+                
+                <div class="border border-zinc-900 bg-black/40 p-6 rounded-xl space-y-3">
+                    <h4 class="text-white font-orbitron font-bold text-base flex items-center gap-2 border-b border-zinc-900 pb-2 text-cyber-purple">
+                        <span class="p-1 rounded bg-cyber-purple/10 text-xs">01</span> ASSAULT RIFLE COMPLIANCE ACT
+                    </h4>
+                    <p class="text-zinc-400"><span class="text-cyber-red font-bold">STRICT BANS APPLIED TO:</span> ODEN, Swordfish, M16, LAG 53, Man O War (Thermite ammunition modifications), Type 19/As Val/Cr56 single-shot ammo conversion matrices.</p>
+                </div>
+
+                <div class="border border-zinc-900 bg-black/40 p-6 rounded-xl space-y-3">
+                    <h4 class="text-white font-orbitron font-bold text-base flex items-center gap-2 border-b border-zinc-900 pb-2 text-cyber-purple">
+                        <span class="p-1 rounded bg-cyber-purple/10 text-xs">02</span> SUBMACHINE GUN (SMG) ENGAGEMENT CODES
+                    </h4>
+                    <p class="text-zinc-400"><span class="text-cyber-red font-bold">STRICT BANS APPLIED TO:</span> Fennec, Pharo (Stun gun attachments), Mac10, Ots9, Chicom, Striker45, Cx-9 (12-round dynamic magazine adaptation), Tec-9, ISO, Sten.</p>
+                </div>
+
+                <div class="border border-zinc-900 bg-black/40 p-6 rounded-xl space-y-3">
+                    <h4 class="text-white font-orbitron font-bold text-base flex items-center gap-2 border-b border-zinc-900 pb-2 text-cyber-purple">
+                        <span class="p-1 rounded bg-cyber-purple/10 text-xs">03</span> SHOTGUN PROTOCOLS
+                    </h4>
+                    <p class="text-zinc-400"><span class="text-cyber-red font-bold">SYSTEM STATE:</span> All Shotguns are universally restricted and <span class="text-cyber-red font-bold">BANNED</span> from active engagement layouts <span class="text-cyber-blue font-bold">EXCEPT HS405</span>.</p>
+                </div>
+
+                <div class="border border-zinc-900 bg-black/40 p-6 rounded-xl space-y-3">
+                    <h4 class="text-white font-orbitron font-bold text-base flex items-center gap-2 border-b border-zinc-900 pb-2 text-cyber-purple">
+                        <span class="p-1 rounded bg-cyber-purple/10 text-xs">04</span> SNIPER SYSTEM SPECIALIZATION MODS
+                    </h4>
+                    <p class="text-zinc-400">Flash, Thermite, or Explosive ammunition structural payloads are completely <span class="text-cyber-red font-bold">PROHIBITED</span>. All auto-snipers / semi-automatic continuous firing frames are completely banned.</p>
+                </div>
+
+                <div class="border border-zinc-900 bg-black/40 p-6 rounded-xl space-y-3">
+                    <h4 class="text-white font-orbitron font-bold text-base flex items-center gap-2 border-b border-zinc-900 pb-2 text-cyber-purple">
+                        <span class="p-1 rounded bg-cyber-purple/10 text-xs">05</span> LIGHT MACHINE GUNS (LMG) CLEARANCE
+                    </h4>
+                    <p class="text-zinc-400"><span class="text-cyber-red font-bold">STRICT BANS APPLIED TO:</span> RPD (Infinite Cooling Barrel modifications), Hades (Sensor configuration grids), MG42 systems.</p>
+                </div>
+
+                <div class="border border-zinc-900 bg-black/40 p-6 rounded-xl space-y-3">
+                    <h4 class="text-white font-orbitron font-bold text-base flex items-center gap-2 border-b border-zinc-900 pb-2 text-cyber-purple">
+                        <span class="p-1 rounded bg-cyber-purple/10 text-xs">06</span> MARKSMAN, SECONDARY, & PAYLOAD ORDNANCE BANS
+                    </h4>
+                    <div class="space-y-2 text-zinc-400">
+                        <div><span class="text-white font-bold">MARKSMAN RIFLES:</span> All models are universally banned.</div>
+                        <div><span class="text-white font-bold">MELEE & LAUNCHERS:</span> All Knives / Combat Blades and Rocket Launchers are completely restricted.</div>
+                        <div><span class="text-white font-bold">PISTOLS:</span> All Secondary Handguns are banned <span class="text-cyber-blue font-bold">EXCEPT standard MW11 architecture</span>.</div>
+                    </div>
+                </div>
+
+                <div class="border border-zinc-900 bg-black/40 p-6 rounded-xl space-y-3">
+                    <h4 class="text-white font-orbitron font-bold text-base flex items-center gap-2 border-b border-zinc-900 pb-2 text-cyber-purple">
+                        <span class="p-1 rounded bg-cyber-purple/10 text-xs">07</span> COMPLIANT UTILITY EQUIPMENT DISPENSARY
+                    </h4>
+                    <p class="text-zinc-400"><span class="text-cyber-blue font-bold">AUTHORIZED SELECTIONS:</span> Grenade (5s Fuse Limits), Trophy Systems, Smoke Grenades, Stim Shot modules are allowed.</p>
+                </div>
+
+                <div class="border border-zinc-900 bg-black/40 p-6 rounded-xl space-y-3">
+                    <h4 class="text-white font-orbitron font-bold text-base flex items-center gap-2 border-b border-zinc-900 pb-2 text-cyber-red">
+                        <span class="p-1 rounded bg-cyber-red/10 text-xs">08</span> INTEGRAL LOBBY STRUCTURE & DISCIPLINE STANDARDS
+                    </h4>
+                    <div class="space-y-2 text-zinc-400">
+                        <p>* <span class="text-white font-bold">COMMUNICATION MATRIX:</span> Persistent active Microphone setup requirement. Only designated Operational Leaders and Voice Masters hold full transmission clearance during standard matches.</p>
+                        <p>* <span class="text-white font-bold">EXPLOIT CODE:</span> Zero tolerance for map bugs or flying mechanics violations.</p>
+                        <p>* <span class="text-white font-bold">MATCHMAKING MATRIX:</span> Competitive format structured as Best of 3 matches. First 2 Rounds: Free Weapon Choice layout (following the restrictions above). Round 3: Sniper Specialization configuration format. Map selection rules follow customized official layouts. Leaving a non-ranked match structural phase intentionally triggers instant administrative review.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="fixed bottom-[30px] left-1/2 -translate-x-1/2 z-[9999] w-auto max-w-md px-4">
+        <div class="bg-cyber-gray/60 border border-zinc-800 backdrop-blur-2xl rounded-full px-6 py-3 flex items-center justify-center gap-8 shadow-2xl transition-all duration-300 hover:border-cyber-purple/40">
+            
+            <button onclick="switchToHome()" id="dock-home-btn" class="flex items-center gap-2 font-orbitron text-xs font-black tracking-widest text-cyber-purple transition-colors relative duration-300">
+                HOME
+                <span class="absolute -bottom-1 left-0 right-0 h-[2px] bg-cyber-purple rounded" id="dock-home-indicator"></span>
+            </button>
+            
+            <div class="w-[1px] h-4 bg-zinc-800"></div>
+            
+            <button onclick="switchToRules()" id="dock-rules-btn" class="flex items-center gap-2 font-orbitron text-xs font-black tracking-widest text-zinc-500 hover:text-white transition-colors relative duration-300">
+                WAR RULES
+                <span class="absolute -bottom-1 left-0 right-0 h-[2px] bg-cyber-red rounded hidden" id="dock-rules-indicator"></span>
+            </button>
+
+        </div>
+    </div>
+
+
+    <script>
+        // ================= ROSTER INITIALIZATION DATABASE =================
+        const NEU_ROSTER_DATABASE = [
+            { name: "ƝЄU • ƊƩɅƬん", uid: "7309091456895877121", device: "A07", serial: "R8YYC", stats: { aim: 96, movement: 94, damage: 98, speed: 95 } },
+            { name: "ƝЄU • GOLABI", uid: "7211883602408636417", device: "POCO X7PRO", serial: "61723", stats: { aim: 92, movement: 96, damage: 91, speed: 97 } },
+            { name: "ƝЄU • BATMAN", uid: "7589697106976112641", device: "A15", serial: "RF8X90869R", stats: { aim: 95, movement: 92, damage: 94, speed: 91 } },
+            { name: "ƝЄU • BATMAN", uid: "7464210957110018051", device: "A15", serial: "RF8X90869R", stats: { aim: 94, movement: 93, damage: 95, speed: 92 } },
+            { name: "ƝЄU • PsyCho", uid: "7064002513037099009", device: "Redmi13c", serial: "IB4XK", stats: { aim: 91, movement: 95, damage: 93, speed: 96 } },
+            { name: "ƝЄU • DeadPan", uid: "6879067480162566145", device: "Poco m6poro", serial: "53034", stats: { aim: 93, movement: 91, damage: 96, speed: 90 } },
+            { name: "ƝЄU • ƦƠƧɆ", uid: "6931409356131336193", device: "POCO M6", serial: "63215", stats: { aim: 95, movement: 97, damage: 90, speed: 98 } },
+            { name: "ƝЄU • 1998", uid: "7220803509187969026", device: "Poco x7pro", serial: "61706", stats: { aim: 92, movement: 94, damage: 93, speed: 94 } },
+            { name: "ƝЄU・ƉЄƛƬӇ", uid: "7253058720947437569", device: "Poco X6", serial: "3be93b91", stats: { aim: 97, movement: 92, damage: 97, speed: 93 } },
+            { name: "ƝЄU・MaMaD", uid: "6957495148956286977", device: "a24", serial: "R58W6", stats: { aim: 90, movement: 93, damage: 92, speed: 91 } }
+        ];
+
+        const WEAPONS_CATALOG = ["DL Q33", "QQ9", "Kilo 141", "HS405", "MW11", "M4", "AK117", "Locust", "Switchblade X9", "Holger 26"];
+        const OPPONENT_TARGETS = ["X_Slayer_X", "ShadowOp", "Vortex_CZ", "GhostWalker", "ApexPredator", "BulletStorm", "Cipher_CODM", "Alpha_Actual", "Titanium_Fist", "Rogue_Wave"];
+
+        // Global Parameters
+        let webGlIntensity = 1.0;
+        let intensityDecayTimeout;
+
+        // ================= CORE SYSTEM APPLICATION INITIALIZATION =================
+        document.addEventListener("DOMContentLoaded", () => {
+            initializeTerminalTypewriter();
+            buildInteractiveRoster();
+            startContinuousKillfeedEngine();
+            initializeWebGLHero();
+            initializeWebGLRules();
+            setup3DNavigationAnimations();
+            setupModalInteractions();
+        });
+
+        // ================= COMPONENT 1: TERMINAL INTERACTION TYPEWRITER & SFX =================
+        function initializeTerminalTypewriter() {
+            const logsContainer = document.getElementById("terminal-logs");
+            const passkeyGate = document.getElementById("passkey-gate");
+            
+            const logSequences = [
+                "AUTHENTICATING SECURE CLAN MODULE...",
+                "LOADING NEURAL NET CODM ENGINES... [OK]",
+                "DECRYPTING RADAR WAVE-CHART SYSTEM...",
+                "COMPILING SPECTRAL AETHER PHYSICS...",
+                "STABILIZING WEBGL CORE PARAMETERS...",
+                "INITIALIZING NEU DATABASE... [READY]"
+            ];
+
+            let lineIndex = 0;
+            let charIndex = 0;
+
+            function printLogCharacter() {
+                if (lineIndex < logSequences.length) {
+                    if (charIndex === 0) {
+                        const newParagraph = document.createElement("p");
+                        newParagraph.classList.add("terminal-line");
+                        logsContainer.appendChild(newParagraph);
+                    }
+                    
+                    const currentLineElement = logsContainer.lastChild;
+                    currentLineElement.textContent += logSequences[lineIndex].charAt(charIndex);
+                    charIndex++;
+                    logsContainer.scrollTop = logsContainer.scrollHeight;
+
+                    if (charIndex < logSequences[lineIndex].length) {
+                        setTimeout(printLogCharacter, 20);
+                    } else {
+                        charIndex = 0;
+                        lineIndex++;
+                        setTimeout(printLogCharacter, 250);
+                    }
+                } else {
+                    // Logs fully rendered -> smoothly fade into passkey entry interface
+                    gsap.to(passkeyGate, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+                }
+            }
+
+            printLogCharacter();
+
+            // Setup Authorization Actions
+            const decryptBtn = document.getElementById("decrypt-btn");
+            const passkeyInput = document.getElementById("passkey-input");
+
+            decryptBtn.addEventListener("click", evaluateAuthorizationAttempt);
+            passkeyInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") evaluateAuthorizationAttempt();
+            });
+        }
+
+        function playSynthFallback(isSuccess) {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                const osc = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                osc.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                const currentTime = ctx.currentTime;
+
+                if (isSuccess) {
+                    osc.type = "sine";
+                    osc.frequency.setValueAtTime(440, currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1200, currentTime + 0.5);
+                    gainNode.gain.setValueAtTime(0.3, currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.01, currentTime + 0.5);
+                    osc.start(currentTime);
+                    osc.stop(currentTime + 0.5);
+                } else {
+                    osc.type = "sawtooth";
+                    osc.frequency.setValueAtTime(140, currentTime);
+                    osc.frequency.linearRampToValueAtTime(60, currentTime + 0.6);
+                    gainNode.gain.setValueAtTime(0.4, currentTime);
+                    gainNode.gain.linearRampToValueAtTime(0.01, currentTime + 0.6);
+                    osc.start(currentTime);
+                    osc.stop(currentTime + 0.6);
+                }
+            } catch (e) {
+                console.warn("Web Audio API allocation failure or blocker present.", e);
+            }
+        }
+
+        function processAudioFeedback(isSuccess) {
+            const successTrack = "https://docs.google.com/uc?export=download&id=136ilX2Pa2qy5eEbZiwwC-R4UUJXfYOqi";
+            const failureTrack = "https://docs.google.com/uc?export=download&id=19sL51cstY47xUgEDpvMFok8OAAd7pIu_";
+            const endpoint = isSuccess ? successTrack : failureTrack;
+
+            const audioObj = new Audio(endpoint);
+            audioObj.volume = 0.4;
+            audioObj.play().catch(() => {
+                playSynthFallback(isSuccess);
+            });
+        }
+
+        function evaluateAuthorizationAttempt() {
+            const inputVal = document.getElementById("passkey-input").value.trim().toLowerCase();
+            const errorMsg = document.getElementById("error-msg");
+
+            if (inputVal === "neuralfam") {
+                processAudioFeedback(true);
+                errorMsg.style.opacity = "0";
+                
+                // Clear Security Overlay Shield Layer
+                gsap.to("#passkey-screen", {
+                    y: "-100%",
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power4.inOut",
+                    onComplete: () => {
+                        document.getElementById("passkey-screen").style.display = "none";
+                        const mainContent = document.getElementById("main-content");
+                        mainContent.classList.remove("opacity-0");
+                        gsap.fromTo(mainContent, { opacity: 0 }, { opacity: 1, duration: 1.2 });
+                        // Re-trigger layout parameters
+                        window.dispatchEvent(new Event('resize'));
+                    }
+                });
+            } else {
+                processAudioFeedback(false);
+                errorMsg.textContent = "DECRYPTION CODE INVALID. INTRUSION ALERT.";
+                errorMsg.style.opacity = "1";
+                gsap.fromTo("#passkey-input", { x: -10 }, { x: 0, duration: 0.4, ease: "rough", clearProps: "x" });
+            }
+        }
+
+        // ================= COMPONENT 2: NATIVE WEBGL HERO SHADER PROTOCOLS =================
+        function initializeWebGLHero() {
+            const canvas = document.getElementById("hero-canvas");
+            const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+            if (!gl) {
+                console.error("WebGL activation context unsupported in this system layer.");
+                return;
+            }
+
+            const vertexShaderSrc = `
+                attribute vec4 position;
+                void main() {
+                    gl_Position = position;
+                }
+            `;
+
+            const fragmentShaderSrc = `
+                precision mediump float;
+                uniform float u_time;
+                uniform vec2 u_resolution;
+                uniform vec2 u_mouse;
+                uniform float u_intensity;
+
+                vec3 hash3(vec2 p) {
+                    vec3 q = vec3(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)), dot(p, vec2(419.2, 371.9)));
+                    return fract(sin(q) * 43758.5453);
+                }
+                float noise(vec2 p) {
+                    vec2 i = floor(p);
+                    vec2 f = fract(p);
+                    vec2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
+                    return mix(mix(dot(hash3(i + vec2(0.0,0.0)).xy, f - vec2(0.0,0.0)), dot(hash3(i + vec2(1.0,0.0)).xy, f - vec2(1.0,0.0)), u.x),
+                               mix(dot(hash3(i + vec2(0.0,1.0)).xy, f - vec2(0.0,1.0)), dot(hash3(i + vec2(1.0,1.0)).xy, f - vec2(1.0,1.0)), u.x), u.y);
+                }
+                float fbm(vec2 p, int octaves) {
+                    float value = 0.0;
+                    float amplitude = 1.0;
+                    float frequency = 0.25;
+                    for(int i = 0; i < 10; i++) {
+                        if(i >= octaves) break;
+                        value += amplitude * noise(p * frequency);
+                        amplitude *= 0.52;
+                        frequency *= 1.13;
+                    }
+                    return value;
+                }
+                float voronoi(vec2 p) {
+                    vec2 n = floor(p);
+                    vec2 f = fract(p);
+                    float md = 50.0;
+                    for(int i = -2; i <= 2; i++) {
+                        for(int j = -2; j <= 2; j++) {
+                            vec2 g = vec2(i, j);
+                            vec2 o = hash3(n + g).xy;
+                            o = 0.5 + 0.41 * sin(u_time * 1.5 + 6.28 * o);
+                            vec2 r = g + o - f;
+                            float d = dot(r, r);
+                            md = min(md, d);
+                        }
+                    }
+                    return sqrt(md);
+                }
+                float plasma(vec2 p, float time) {
+                    float a = sin(p.x * 8.0 + time * 2.0);
+                    float b = sin(p.y * 8.0 + time * 1.7);
+                    float c = sin((p.x + p.y) * 6.0 + time * 1.3);
+                    float d = sin(sqrt(p.x * p.x + p.y * p.y) * 8.0 + time * 2.3);
+                    return (a + b + c + d) * 0.5;
+                }
+                vec2 curl(vec2 p, float time) {
+                    float eps = 0.5;
+                    float n1 = fbm(p + vec2(eps, 0.0), 6);
+                    float n2 = fbm(p - vec2(eps, 0.0), 6);
+                    float n3 = fbm(p + vec2(0.0, eps), 6);
+                    float n4 = fbm(p - vec2(0.0, eps), 6);
+                    return vec2((n3 - n4) / (2.0 * eps), (n2 - n1) / (2.0 * eps));
+                }
+                float grain(vec2 uv, float time) {
+                    vec2 seed = uv * time;
+                    return fract(sin(dot(seed, vec2(12.9898, 78.233))) * 43758.5453);
+                }
+                void main() {
+                    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+                    vec2 st = (uv - 0.5) * 2.0;
+                    st.x *= u_resolution.x / u_resolution.y;
+                    float time = u_time * 0.25;
+                    vec2 curlForce = curl(st * 2.0, time) * 0.6;
+                    vec2 flowField = st + curlForce;
+                    float dist1 = fbm(flowField * 1.5 + time * 1.2, 8) * 0.4;
+                    float dist2 = fbm(flowField * 2.3 - time * 0.8, 6) * 0.3;
+                    float dist3 = fbm(flowField * 3.1 + time * 1.8, 4) * 0.2;
+                    float dist4 = fbm(flowField * 4.7 - time * 1.1, 3) * 0.15;
+                    float cells = voronoi(flowField * 2.5 + time * 0.5);
+                    cells = smoothstep(0.1, 0.7, cells);
+                    float plasmaEffect = plasma(flowField + vec2(dist1, dist2), time * 1.5) * 0.2;
+                    float totalDist = dist1 + dist2 + dist3 + dist4 + plasmaEffect;
+                    float streak1 = sin((st.x + totalDist) * 15.0 + time * 3.0) * 0.5 + 0.5;
+                    float streak2 = sin((st.x + totalDist * 0.7) * 25.0 - time * 2.0) * 0.5 + 0.5;
+                    float streak3 = sin((st.x + totalDist * 1.3) * 35.0 + time * 4.0) * 0.5 + 0.5;
+                    streak1 = smoothstep(0.3, 0.7, streak1);
+                    streak2 = smoothstep(0.2, 0.8, streak2);
+                    streak3 = smoothstep(0.4, 0.6, streak3);
+                    float combinedStreaks = streak1 * 0.6 + streak2 * 0.4 + streak3 * 0.5;
+                    float shape1 = 1.0 - abs(st.x + totalDist * 0.6);
+                    float shape2 = 1.0 - abs(st.x + totalDist * 0.4 + sin(st.y * 3.0 + time) * 0.15);
+                    float shape3 = 1.0 - abs(st.x + totalDist * 0.8 + cos(st.y * 2.0 - time) * 0.1);
+                    shape1 = smoothstep(0.0, 1.0, shape1);
+                    shape2 = smoothstep(0.1, 0.9, shape2);
+                    shape3 = smoothstep(0.2, 0.8, shape3);
+                    float finalShape = max(shape1 * 0.8, max(shape2 * 0.6, shape3 * 0.4));
+                    vec3 color1 = vec3(1.0, 0.1, 0.6);
+                    vec3 color2 = vec3(1.0, 0.3, 0.1);
+                    vec3 color3 = vec3(0.9, 0.1, 1.0);
+                    vec3 color4 = vec3(0.1, 0.5, 1.0);
+                    vec3 color5 = vec3(0.1, 1.0, 0.9);
+                    vec3 color6 = vec3(0.3, 0.1, 0.9);
+                    vec3 color7 = vec3(1.0, 0.8, 0.1);
+                    float gradient = 1.0 - uv.y;
+                    float colorNoise = fbm(flowField * 3.0 + time * 0.5, 4) * 0.5 + 0.5;
+                    float colorShift = sin(time * 1.5 + st.y * 2.0) * 0.5 + 0.5;
+                    vec3 finalColor;
+                    float t1 = smoothstep(0.85, 1.0, gradient);
+                    float t2 = smoothstep(0.7, 0.85, gradient);
+                    float t3 = smoothstep(0.5, 0.7, gradient);
+                    float t4 = smoothstep(0.3, 0.5, gradient);
+                    float t5 = smoothstep(0.15, 0.3, gradient);
+                    float t6 = smoothstep(0.0, 0.15, gradient);
+                    finalColor = mix(color6, color7, t6);
+                    finalColor = mix(finalColor, color5, t5);
+                    finalColor = mix(finalColor, color4, t4);
+                    finalColor = mix(finalColor, color3, t3);
+                    finalColor = mix(finalColor, color2, t2);
+                    finalColor = mix(finalColor, color1, t1);
+                    finalColor = mix(finalColor, color1, colorNoise * 0.82);
+                    finalColor = mix(finalColor, color5, colorShift * 0.5);
+                    vec2 aberration = curlForce * 0.02;
+                    vec3 aberrationColor = finalColor;
+                    aberrationColor.r = mix(finalColor.r, color1.r, length(aberration) * 2.0);
+                    aberrationColor.b = mix(finalColor.b, color4.b, length(aberration) * 1.5);
+                    aberrationColor.g = mix(finalColor.g, color5.g, length(aberration) * 1.2);
+                    float pulse1 = sin(time * 3.0 + st.y * 6.0) * 0.5 + 0.5;
+                    float pulse2 = sin(time * 4.5 - st.y * 8.0) * 0.5 + 0.5;
+                    float energyPulse = smoothstep(0.3, 0.7, pulse1 * pulse2);
+                    float intensity = finalShape * combinedStreaks * (1.0 + energyPulse * 0.4);
+                    intensity *= (1.0 + cells * 0.2);
+                    intensity *= u_intensity;
+                    vec2 mouse = u_mouse / u_resolution.xy;
+                    mouse = (mouse - 0.5) * 2.0;
+                    mouse.x *= u_resolution.x / u_resolution.y;
+                    float mouseInfluence = 1.0 - length(st - mouse) * 0.6;
+                    mouseInfluence = max(0.0, mouseInfluence);
+                    mouseInfluence = smoothstep(0.0, 1.0, mouseInfluence);
+                    intensity += mouseInfluence * 0.6;
+                    aberrationColor = mix(aberrationColor, color1, 0.3);
+                    vec3 result = aberrationColor * intensity;
+                    float bloom = smoothstep(0.4, 1.0, intensity) * 0.54;
+                    result += bloom * finalColor;
+                    result = pow(result, vec3(0.85));
+                    result = mix(result, result * result, 0.2);
+                    float vignette = 1.0 - length(uv - 0.5) * 0.85;
+                    vignette = smoothstep(0.2, 1.0, vignette);
+                    vec3 bgColor = vec3(0.02, 0.01, 0.12) + finalColor * 0.03;
+                    result = mix(bgColor, result, smoothstep(0.0, 0.4, intensity));
+                    result *= vignette;
+                    result = mix(vec3(dot(result, vec3(0.299, 0.587, 0.114))), result, 1.3);
+                    float grainAmount = 0.11;
+                    float grainValue = grain(uv, time * 0.5) * 2.0 - 1.0;
+                    result += grainValue * grainAmount;
+                    float scanline = sin(uv.y * u_resolution.y * 2.0) * 0.04;
+                    result += scanline;
+                    gl_FragColor = vec4(result, 1.0);
+                }
+            `;
+
+            function loadShader(gl, type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                    console.error("Shader calculation exception detected:", gl.getShaderInfoLog(shader));
+                    gl.deleteShader(shader);
+                    return null;
+                }
+                return shader;
+            }
+
+            const vs = loadShader(gl, gl.VERTEX_SHADER, vertexShaderSrc);
+            const fs = loadShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSrc);
+            const program = gl.createProgram();
+            gl.attachShader(program, vs);
+            gl.attachShader(program, fs);
+            gl.linkProgram(program);
+
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                console.error("WebGL core allocation linker exception:", gl.getProgramInfoLog(program));
+                return;
+            }
+
+            const vertices = new Float32Array([
+                -1.0, -1.0,
+                 1.0, -1.0,
+                -1.0,  1.0,
+                -1.0,  1.0,
+                 1.0, -1.0,
+                 1.0,  1.0,
+            ]);
+
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+            const positionLoc = gl.getAttribLocation(program, "position");
+            gl.enableVertexAttribArray(positionLoc);
+            gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+
+            gl.useProgram(program);
+
+            const uTime = gl.getUniformLocation(program, "u_time");
+            const uResolution = gl.getUniformLocation(program, "u_resolution");
+            const uMouse = gl.getUniformLocation(program, "u_mouse");
+            const uIntensity = gl.getUniformLocation(program, "u_intensity");
+
+            let mouseX = canvas.width / 2;
+            let mouseY = canvas.height / 2;
+
+            window.addEventListener("resize", resizeCanvas);
+            function resizeCanvas() {
+                canvas.width = canvas.clientWidth;
+                canvas.height = canvas.clientHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+            resizeCanvas();
+
+            window.addEventListener("mousemove", (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = rect.height - (e.clientY - rect.top); // Flip Y matrix alignment
+                
+                // Boost intensity metric on rapid input tracking activity
+                webGlIntensity = 1.15;
+                clearTimeout(intensityDecayTimeout);
+                intensityDecayTimeout = setTimeout(() => {
+                    gsap.to(window, {
+                        customIntensityDecay: 1.0,
+                        duration: 1.5,
+                        onUpdate: () => { webGlIntensity = 1.0; }
+                    });
+                }, 100);
+            });
+
+            function renderEngineLoop(time) {
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.uniform1f(uTime, time * 0.001);
+                gl.uniform2f(uResolution, canvas.width, canvas.height);
+                gl.uniform2f(uMouse, mouseX, mouseY);
+                gl.uniform1f(uIntensity, webGlIntensity);
+
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(renderEngineLoop);
+            }
+            requestAnimationFrame(renderEngineLoop);
+        }
+
+        // ================= COMPONENT 2B: WEBGL RULES HEADER SHADER (TACTICAL SECURITY MATRIX) =================
+        function initializeWebGLRules() {
+            const canvas = document.getElementById("rules-canvas");
+            if (!canvas) return;
+            const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+            if (!gl) return;
+
+            const vertexShaderSrc = `
+                attribute vec4 position;
+                void main() {
+                    gl_Position = position;
+                }
+            `;
+
+            const fragmentShaderSrc = `
+                precision mediump float;
+                uniform float u_time;
+                uniform vec2 u_resolution;
+
+                float hash(vec2 p) {
+                    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+                }
+
+                float noise(vec2 p) {
+                    vec2 i = floor(p);
+                    vec2 f = fract(p);
+                    vec2 u = f * f * (3.0 - 2.0 * f);
+                    return mix(mix(hash(i + vec2(0.0,0.0)), hash(i + vec2(1.0,0.0)), u.x),
+                               mix(hash(i + vec2(0.0,1.0)), hash(i + vec2(1.0,1.0)), u.x), u.y);
+                }
+
+                void main() {
+                    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+                    vec2 st = (uv - 0.5) * 2.0;
+                    st.x *= u_resolution.x / u_resolution.y;
+
+                    float time = u_time * 0.4;
+
+                    // Radar/hologram rotation components
+                    float angle = atan(st.y, st.x);
+                    float dist = length(st);
+
+                    // Dynamic tactical grid alignment
+                    vec2 grid = sin(st * 16.0 - vec2(0.0, time * 1.5));
+                    float gridVal = smoothstep(0.96, 0.99, max(grid.x, grid.y)) * 0.25;
+
+                    // Continuous radar sweeping logic
+                    float sweep = sin(angle - time * 1.2) * 0.5 + 0.5;
+                    sweep = pow(sweep, 12.0) * smoothstep(1.2, 0.0, dist);
+
+                    // Glowing concentric HUD circles (dashing applied)
+                    float ring1 = smoothstep(0.015, 0.0, abs(dist - 0.35));
+                    float ring2 = smoothstep(0.01, 0.0, abs(dist - 0.65));
+                    float dashes1 = step(0.15, fract(angle * 6.0 / 3.14159));
+                    float dashes2 = step(0.3, fract(angle * 3.0 / 3.14159));
+                    float hud = (ring1 * dashes1 + ring2 * dashes2) * 0.35;
+
+                    // Organic cyber-ripple effect
+                    float plasma = noise(st * 3.0 + vec2(0.0, -time)) * 0.3;
+
+                    // Scanning line beam
+                    float beam = smoothstep(0.985, 0.999, sin(uv.y * 3.14159 - time * 0.8));
+
+                    // Cyber red palette blending
+                    vec3 bgColor = vec3(0.01, 0.0, 0.03);
+                    vec3 coreColor = vec3(0.9, 0.1, 0.15); // Crimson Cyber
+                    vec3 cyanAccent = vec3(0.1, 0.6, 0.9); // Secondary glow
+
+                    vec3 finalColor = bgColor;
+                    finalColor += coreColor * (gridVal + sweep * 0.5 + plasma * 0.4 + beam * 0.7);
+                    finalColor += mix(coreColor, cyanAccent, 0.3) * hud;
+
+                    // Digital noise grain
+                    finalColor += vec3(hash(uv + time)) * 0.07;
+
+                    // Soft vignette
+                    float vignette = uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y);
+                    vignette = clamp(pow(16.0 * vignette, 0.4), 0.0, 1.0);
+                    finalColor *= vignette;
+
+                    gl_FragColor = vec4(finalColor, 1.0);
+                }
+            `;
+
+            function loadShader(gl, type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                    gl.deleteShader(shader);
+                    return null;
+                }
+                return shader;
+            }
+
+            const vs = loadShader(gl, gl.VERTEX_SHADER, vertexShaderSrc);
+            const fs = loadShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSrc);
+            const program = gl.createProgram();
+            gl.attachShader(program, vs);
+            gl.attachShader(program, fs);
+            gl.linkProgram(program);
+
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                return;
+            }
+
+            const vertices = new Float32Array([
+                -1.0, -1.0,
+                 1.0, -1.0,
+                -1.0,  1.0,
+                -1.0,  1.0,
+                 1.0, -1.0,
+                 1.0,  1.0,
+            ]);
+
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+            const positionLoc = gl.getAttribLocation(program, "position");
+            gl.enableVertexAttribArray(positionLoc);
+            gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+
+            gl.useProgram(program);
+
+            const uTime = gl.getUniformLocation(program, "u_time");
+            const uResolution = gl.getUniformLocation(program, "u_resolution");
+
+            window.addEventListener("resize", resizeRulesCanvas);
+            function resizeRulesCanvas() {
+                canvas.width = canvas.clientWidth;
+                canvas.height = canvas.clientHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+            resizeRulesCanvas();
+
+            function renderEngineLoop(time) {
+                // Render rules shader frame only if parent rules element is visible
+                if (canvas.offsetParent !== null) {
+                    gl.clear(gl.COLOR_BUFFER_BIT);
+                    gl.uniform1f(uTime, time * 0.001);
+                    gl.uniform2f(uResolution, canvas.width, canvas.height);
+                    gl.drawArrays(gl.TRIANGLES, 0, 6);
+                }
+                requestAnimationFrame(renderEngineLoop);
+            }
+            requestAnimationFrame(renderEngineLoop);
+        }
+
+        // ================= COMPONENT 3: MENU MATRIX 3D GSAP ANIMATION =================
+        function setup3DNavigationAnimations() {
+            const navLinks = document.querySelectorAll(".nav-large-link");
+            navLinks.forEach(link => {
+                link.addEventListener("mouseenter", () => {
+                    gsap.to(link, {
+                        scale: 1.05,
+                        rotationX: -2,
+                        z: 20,
+                        textShadow: "0 0 20px rgba(191,128,255,0.8), 0 0 30px rgba(191,128,255,0.4)",
+                        duration: 0.6,
+                        transformPerspective: 1000,
+                        ease: "power2.out"
+                    });
+                });
+                link.addEventListener("mouseleave", () => {
+                    gsap.to(link, {
+                        scale: 1,
+                        rotationX: 0,
+                        z: 0,
+                        textShadow: "none",
+                        duration: 0.6,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        // ================= COMPONENT 4: LIVE KILLFEED SIMULATION REACTOR =================
+        function startContinuousKillfeedEngine() {
+            const feedContainer = document.getElementById("killfeed-container");
+            
+            function spawnKillEvent() {
+                if (document.hidden) return; // Halt activity if browser tab is processing background loops
+                
+                const activePlayer = NEU_ROSTER_DATABASE[Math.floor(Math.random() * NEU_ROSTER_DATABASE.length)].name;
+                const activeWeapon = WEAPONS_CATALOG[Math.floor(Math.random() * WEAPONS_CATALOG.length)];
+                const targetedOpponent = OPPONENT_TARGETS[Math.floor(Math.random() * OPPONENT_TARGETS.length)];
+
+                const feedRow = document.createElement("div");
+                feedRow.className = "killfeed-item flex items-center justify-between border border-zinc-900/40 bg-zinc-950/40 px-4 py-2.5 rounded-lg opacity-0 transform translate-x-4";
+                
+                feedRow.innerHTML = `
+                    <span class="text-cyber-purple font-bold">${activePlayer}</span>
+                    <span class="text-[11px] uppercase tracking-widest px-2.5 py-0.5 border border-cyber-red/20 bg-cyber-red/5 rounded text-cyber-red font-mono font-semibold">[ ${activeWeapon} ]</span>
+                    <span class="text-zinc-500">${targetedOpponent}</span>
+                `;
+
+                feedContainer.appendChild(feedRow);
+                gsap.to(feedRow, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" });
+
+                // Cycle management engine to clear over-indexed terminal logs
+                const currentRows = feedContainer.querySelectorAll(".killfeed-item");
+                if (currentRows.length > 5) {
+                    const oldestItem = currentRows[0];
+                    oldestItem.classList.add("removing");
+                    setTimeout(() => {
+                        oldestItem.remove();
+                    }, 400);
+                }
+            }
+
+            setInterval(spawnKillEvent, 2200);
+        }
+
+        // ================= COMPONENT 5: DYNAMIC ROSTER MATRIX RENDERER =================
+        function buildInteractiveRoster() {
+            const grid = document.getElementById("roster-grid");
+            grid.innerHTML = ""; // Force absolute clean render frame
+
+            NEU_ROSTER_DATABASE.forEach((operative, idx) => {
+                const card = document.createElement("div");
+                card.className = "border border-zinc-900 bg-cyber-gray/50 rounded-xl p-5 relative overflow-hidden group hover:border-cyber-purple/60 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 shadow-md";
+                card.setAttribute("data-index", idx);
+                
+                card.innerHTML = `
+                    <div class="absolute -right-4 -bottom-4 text-6xl text-zinc-900/40 font-black font-mono select-none group-hover:text-cyber-purple/5 transition-colors">${String(idx + 1).padStart(2, '0')}</div>
+                    <div class="space-y-3 relative z-10">
+                        <div class="text-[10px] font-mono text-cyber-purple tracking-widest uppercase font-semibold">RANKED OPERATIVE</div>
+                        <h4 class="text-base font-bold text-white tracking-wide truncate group-hover:text-cyber-purple transition-colors">${operative.name}</h4>
+                        <div class="border-t border-zinc-900 pt-3 space-y-1 text-xs font-mono text-zinc-500">
+                            <div>DEVICE: <span class="text-zinc-300 uppercase">${operative.device}</span></div>
+                            <div class="text-[10px] opacity-60">UID: ${operative.uid.substring(0,8)}...</div>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener("click", () => displayTacticalDossier(idx));
+                grid.appendChild(card);
+            });
+        }
+
+        // ================= COMPONENT 6: INTERACTIVE DATA DOSSIER INTERNALS =================
+        function displayTacticalDossier(index) {
+            const operative = NEU_ROSTER_DATABASE[index];
+            const contentZone = document.getElementById("dossier-content");
+            const modalFrame = document.getElementById("dossier-modal");
+
+            contentZone.innerHTML = `
+                <div class="flex flex-col space-y-1">
+                    <span class="text-xs font-mono text-cyber-purple tracking-widest">// OFFICIAL FIELDFILE DETAILED</span>
+                    <h3 class="text-2xl font-black text-white uppercase tracking-wide">${operative.name}</h3>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 bg-black/40 p-4 border border-zinc-900 rounded-xl font-mono text-xs text-zinc-400">
+                    <div><span class="text-zinc-600 block">UID MATRIX ASSIGNMENT</span><span class="text-white select-all">${operative.uid}</span></div>
+                    <div><span class="text-zinc-600 block">HARDWARE PROVISION</span><span class="text-white uppercase">${operative.device}</span></div>
+                    <div><span class="text-zinc-600 block">SERIAL SYSTEM LOG</span><span class="text-cyber-blue">${operative.serial}</span></div>
+                    <div><span class="text-zinc-600 block">REGIME ASSIGNMENT</span><span class="text-cyber-purple">NEU CLAN x CZ</span></div>
+                </div>
+
+                <div class="space-y-4 pt-2">
+                    <span class="text-xs font-mono text-zinc-500 block uppercase tracking-widest">Performance Metrics Matrix</span>
+                    
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-mono"><span class="text-zinc-400">TARGET ACQUISITION / AIMING:</span><span class="text-white font-bold">${operative.stats.aim}%</span></div>
+                        <div class="w-full h-2 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
+                            <div class="dossier-progress-bar h-full bg-cyber-purple w-0 transition-all duration-1000 ease-out" data-width="${operative.stats.aim}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-mono"><span class="text-zinc-400">EVASIVE VELOCITY / MOVEMENT:</span><span class="text-white font-bold">${operative.stats.movement}%</span></div>
+                        <div class="w-full h-2 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
+                            <div class="dossier-progress-bar h-full bg-cyber-purple w-0 transition-all duration-1000 ease-out" data-width="${operative.stats.movement}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-mono"><span class="text-zinc-400">COMBAT OUTPUT / DAMAGE SHIFT:</span><span class="text-white font-bold">${operative.stats.damage}%</span></div>
+                        <div class="w-full h-2 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
+                            <div class="dossier-progress-bar h-full bg-cyber-red w-0 transition-all duration-1000 ease-out" data-width="${operative.stats.damage}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-mono"><span class="text-zinc-400">SCREEN REACTION RATE SPEED:</span><span class="text-white font-bold">${operative.stats.speed}%</span></div>
+                        <div class="w-full h-2 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
+                            <div class="dossier-progress-bar h-full bg-cyber-blue w-0 transition-all duration-1000 ease-out" data-width="${operative.stats.speed}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Display Frame
+            modalFrame.classList.remove("hidden");
+            setTimeout(() => {
+                modalFrame.classList.add("opacity-100");
+                modalFrame.firstElementChild.classList.remove("scale-95");
+                
+                // Animate progress parameters post rendering sequence
+                const targetBars = contentZone.querySelectorAll(".dossier-progress-bar");
+                targetBars.forEach(bar => {
+                    bar.style.width = bar.getAttribute("data-width");
+                });
+            }, 50);
+        }
+
+        function setupModalInteractions() {
+            const modalFrame = document.getElementById("dossier-modal");
+            const closeBtn = document.getElementById("modal-close");
+
+            function dismissModal() {
+                modalFrame.classList.remove("opacity-100");
+                modalFrame.firstElementChild.classList.add("scale-95");
+                setTimeout(() => {
+                    modalFrame.classList.add("hidden");
+                }, 300);
+            }
+
+            closeBtn.addEventListener("click", dismissModal);
+            modalFrame.addEventListener("click", (e) => {
+                if (e.target === modalFrame) dismissModal();
+            });
+        }
+
+        // ================= COMPONENT 7: VIEW CONTROLLER & ROUTING PROTOCOLS =================
+        function switchToHome() {
+            const homeView = document.getElementById("home-view");
+            const killfeedSect = document.getElementById("killfeed-anchor").parentElement;
+            const rosterSect = document.getElementById("roster-anchor").nextElementSibling.previousElementSibling;
+            const weaponSect = document.getElementById("weapon-anchor").nextElementSibling.previousElementSibling;
+            
+            const rulesView = document.getElementById("rules-view");
+
+            // Update Floating Dock Visual Architecture States
+            document.getElementById("dock-home-btn").classList.add("text-cyber-purple");
+            document.getElementById("dock-home-btn").classList.remove("text-zinc-500");
+            document.getElementById("dock-home-indicator").classList.remove("hidden");
+
+            document.getElementById("dock-rules-btn").classList.remove("text-cyber-red");
+            document.getElementById("dock-rules-btn").classList.add("text-zinc-500");
+            document.getElementById("dock-rules-indicator").classList.add("hidden");
+
+            // Smooth crossfade interaction transition execution
+            gsap.to(rulesView, { opacity: 0, duration: 0.4, onComplete: () => {
+                rulesView.classList.add("hidden");
+                
+                homeView.classList.remove("hidden");
+                killfeedSect.classList.remove("hidden");
+                document.getElementById("roster-anchor").classList.remove("hidden");
+                document.getElementById("roster-anchor").nextElementSibling.classList.remove("hidden");
+                document.getElementById("weapon-anchor").classList.remove("hidden");
+                document.getElementById("weapon-anchor").nextElementSibling.classList.remove("hidden");
+
+                gsap.fromTo([homeView, killfeedSect, document.getElementById("roster-anchor").nextElementSibling, document.getElementById("weapon-anchor").nextElementSibling], 
+                    { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.1 });
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Force sync update execution to WebGL viewport size limits
+                window.dispatchEvent(new Event('resize'));
+            }});
+        }
+
+        function switchToRules() {
+            const homeView = document.getElementById("home-view");
+            const killfeedSect = document.getElementById("killfeed-anchor").parentElement;
+            const rosterSect = document.getElementById("roster-anchor").nextElementSibling;
+            const weaponSect = document.getElementById("weapon-anchor").nextElementSibling;
+            
+            const rulesView = document.getElementById("rules-view");
+
+            // Update Floating Dock Visual Architecture States
+            document.getElementById("dock-home-btn").classList.remove("text-cyber-purple");
+            document.getElementById("dock-home-btn").classList.add("text-zinc-500");
+            document.getElementById("dock-home-indicator").classList.add("hidden");
+
+            document.getElementById("dock-rules-btn").classList.add("text-cyber-red");
+            document.getElementById("dock-rules-btn").classList.remove("text-zinc-500");
+            document.getElementById("dock-rules-indicator").classList.remove("hidden");
+
+            // Smooth crossfade interaction transition execution
+            gsap.to([homeView, killfeedSect, rosterSect, weaponSect, document.getElementById("roster-anchor"), document.getElementById("weapon-anchor")], { 
+                opacity: 0, duration: 0.4, onComplete: () => {
+                    homeView.classList.add("hidden");
+                    killfeedSect.classList.add("hidden");
+                    document.getElementById("roster-anchor").classList.add("hidden");
+                    rosterSect.classList.add("hidden");
+                    document.getElementById("weapon-anchor").classList.add("hidden");
+                    weaponSect.classList.add("hidden");
+
+                    rulesView.classList.remove("hidden");
+                    gsap.fromTo(rulesView, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // Trigger canvas resize context update for rules viewport
+                    window.dispatchEvent(new Event('resize'));
+                }
+            });
+        }
+    </script>
+</body>
+</html>
