@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEU CLAN // ƇȤ・FAMILY HUB</title>
+    <title>NEU CLAN // NEU . FAMILY HUB</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,6 @@
     </script>
 
     <style>
-        /* Cybernetic Scanlines and Layout Correction */
         body::before {
             content: " ";
             display: block;
@@ -60,7 +59,6 @@
             text-shadow: 0 0 10px rgba(255,51,51,0.7), 0 0 20px rgba(255,51,51,0.4);
         }
 
-        /* Fluid Killfeed Removals */
         .killfeed-item {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             max-height: 100px;
@@ -76,7 +74,6 @@
             transform: translateX(-50px);
         }
 
-        /* Scrollbar Core Modification */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -86,6 +83,18 @@
         ::-webkit-scrollbar-thumb {
             background: #bf80ff;
             border-radius: 3px;
+        }
+
+        @keyframes radar-sweep {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .radar-sweep-css {
+            animation: radar-sweep 5s linear infinite;
         }
     </style>
 </head>
@@ -130,7 +139,7 @@
                     <h1 class="text-xl md:text-2xl font-black text-white tracking-tighter">NEU <span class="text-cyber-purple text-sm font-light font-mono block tracking-widest">CLAN // REGIME</span></h1>
                 </div>
                 <div class="text-right text-xs font-mono text-zinc-500">
-                    <div>COLLAB: <span class="text-white font-bold font-orbitron">ƇȤ・FAMILY</span></div>
+                    <div>COLLAB: <span class="text-white font-bold font-orbitron">NEU . Family</span></div>
                     <div class="animate-pulse">ONLINE SYNC // SECURE</div>
                 </div>
             </header>
@@ -176,7 +185,7 @@
                 </div>
                 <div>
                     <span class="block text-zinc-600">MATCH PROTOCOL</span>
-                    <span class="text-cyber-red font-bold">CZ COMPETITIVE BANS ACT</span>
+                    <span class="text-cyber-red font-bold">NEU BANS ACT</span>
                 </div>
             </div>
         </section>
@@ -189,8 +198,8 @@
                     
                     <div class="w-72 h-72 md:w-80 md:h-80 rounded-full border border-cyber-purple/30 relative flex items-center justify-center overflow-hidden bg-black/60 shadow-neon-purple/5">
                         
-                        <div class="absolute inset-0 origin-center rounded-full" 
-                             style="background: conic-gradient(from 0deg, rgba(191, 128, 255, 0.15) 0deg, rgba(191, 128, 255, 0) 90deg); animation: radar-sweep 4s linear infinite;">
+                        <div class="absolute inset-0 origin-center rounded-full radar-sweep-css" 
+                             style="background: conic-gradient(from 0deg, rgba(191, 128, 255, 0.15) 0deg, rgba(191, 128, 255, 0) 90deg);">
                         </div>
 
                         <div class="absolute w-3/4 h-3/4 border border-dashed border-cyber-purple/20 rounded-full"></div>
@@ -266,50 +275,190 @@
         <section class="w-full bg-cyber-black py-24 px-6 border-t border-zinc-900 relative">
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col space-y-2 mb-16 items-center text-center">
-                    <span class="text-xs font-mono text-cyber-red uppercase tracking-widest">// COMBAT HARDWARE INTERNALS</span>
-                    <h3 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase">NEU SYSTEM SIGNATURE BLUEPRINTS</h3>
+                    <span class="text-xs font-mono text-cyber-red uppercase tracking-widest">// COMBAT SMG HARDWARE METAS</span>
+                    <h3 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase">NEU SYSTEM SIGNATURE WEAPONS</h3>
                     <div class="w-24 h-[2px] bg-cyber-red"></div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
                     <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-purple/40 transition-all duration-300 flex flex-col justify-between">
-                        <div class="absolute top-0 right-0 bg-[#bf80ff]/10 text-cyber-purple px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">LONG RANGE ARCHITECTURE</div>
+                        <div class="absolute top-0 right-0 bg-[#bf80ff]/10 text-cyber-purple px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">META Tier S+</div>
                         <div>
                             <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: META 01</span>
-                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">DL Q33 — TECH SNIPER V2</h4>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">SWITCHBLADE X9</h4>
                             
                             <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
-                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">MIP Light Advance</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">YKM Combat Stock</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-500">PERK:</span> <span class="text-cyber-purple font-bold">FMJ (Heavy Penetration)</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-500">LASER:</span> <span class="text-white font-bold">OWC Laser - Tactical</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-zinc-400">Standard Kinetic Caliber</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">MIP Light Extended Barrel</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">YKM Light Stock</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">LASER:</span> <span class="text-cyber-purple font-bold">OWC Laser - Tactical</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-white font-bold">Extended Mag A</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">REAR GRIP:</span> <span class="text-zinc-400">Granulated Grip Tape</span></div>
                             </div>
                         </div>
                         <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
-                            <span class="text-cyber-purple block font-bold mb-1">// SYSTEM CALIBRATION LOG</span>
-                            Engineered explicitly for zero-delay hit scanning and maximum armor-piercing index parameters inside long-range professional CODM tournament circuits.
+                            <span class="text-cyber-purple block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            Offers elite maneuverability, rapid ADS timelines, and extreme target control under highly dynamic close-combat professional match sets.
                         </div>
                     </div>
 
                     <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-red/40 transition-all duration-300 flex flex-col justify-between">
-                        <div class="absolute top-0 right-0 bg-cyber-red/10 text-cyber-red px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">SLAYER ARCHITECTURE</div>
+                        <div class="absolute top-0 right-0 bg-cyber-red/10 text-cyber-red px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">AGGRESSIVE SLAYER</div>
                         <div>
-                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: META 02</span>
-                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">QQ9 // KILO 141 SYSTEM</h4>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: HIGH ACCURACY META</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">QQ9 // MP5 ARCHITECTURE</h4>
                             
                             <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
-                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">OWC Ranger / Marksman Spec</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">No Stock / RTC Steady Component</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-500">LASER:</span> <span class="text-white font-bold">OWC Laser - Tactical Matrix</span></div>
-                                <div class="flex justify-between"><span class="text-zinc-500">MAGAZINE:</span> <span class="text-cyber-red font-bold">Extended Fast Reload System</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">Monolithic Integral Suppressor</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">No Stock Component</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">LASER:</span> <span class="text-cyber-red font-bold">OWC Laser - Tactical</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-white font-bold">45 Round Extended Mag</span></div>
                                 <div class="flex justify-between"><span class="text-zinc-500">REAR GRIP:</span> <span class="text-white font-bold">Granulated Grip Tape</span></div>
                             </div>
                         </div>
                         <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
-                            <span class="text-cyber-red block font-bold mb-1">// SYSTEM CALIBRATION LOG</span>
-                            Calibrated to secure unmatched TTK ratios, dynamic horizontal drift stabilization vector parameters, and optimized ADS handling limits during close-quarters operations.
+                            <span class="text-cyber-red block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            Calibrated for perfect recoil control, highly minimized bullet spread dispersion, and outstanding mid-range engagements without losing crucial handling frame rates.
+                        </div>
+                    </div>
+
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-blue/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-cyber-blue/10 text-cyber-blue px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">SEASON S5 METEOR</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: STEALTH HYBRID SMG</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">VMP SYSTEM</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">Heavy Barrel (Stealth Provision)</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">Bandit Adjustable Pad</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-cyber-blue font-bold">Phoenix Fast Mag</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">PERK:</span> <span class="text-white font-bold">Rapid Fire Modification</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">UNDERBARREL:</span> <span class="text-white font-bold">VX Pineapple Grip</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-blue block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            A massive stealth bullet fire rate configuration yielding a deadly TTK profile. Designed specifically for deep-line tactical flanking matches.
+                        </div>
+                    </div>
+
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-purple/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-[#bf80ff]/10 text-cyber-purple px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">S+ TIER ALL-ROUNDER</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: ABSOLUTE META AR</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">BP50 SYSTEM</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">MUZZLE:</span> <span class="text-white font-bold">Tactical Suppressor</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">OWC Ranger</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-cyber-purple font-bold">No Stock</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-white font-bold">60 Round Extended Mag</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">REAR GRIP:</span> <span class="text-zinc-400">Granulated Grip Tape</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-purple block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            Unbelievable firing speed, flat vertical recoil control, and absolute supremacy in long-range multi-kills. Highly forgiving for mechanical mistakes.
+                        </div>
+                    </div>
+
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-red/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-cyber-red/10 text-cyber-red px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">S-TIER BURST DAMAGE</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: HIGH CALIBER POWERHOUSE</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">HVK-30</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">MUZZLE:</span> <span class="text-white font-bold">Tactical Suppressor</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">RTC Light Extended Barrel</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">No Stock Component</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-cyber-red font-bold">Large Caliber Ammo</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">REAR GRIP:</span> <span class="text-white font-bold">Granulated Grip Tape</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-red block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            Offers massive headshot multipliers and rapid upper-body damage. Dominates 1v1 gunfights completely in tactical Search & Destroy circuits.
+                        </div>
+                    </div>
+
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-blue/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-cyber-blue/10 text-cyber-blue px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">S-TIER 3-TAP AR</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: HEAVY SHREDDER CONFIG</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">DR-H</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">MUZZLE:</span> <span class="text-white font-bold">Monolithic Suppressor</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">OWC Ranger Barrel</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">No Stock Component</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-cyber-blue font-bold">25 Round OTM Mag</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">REAR GRIP:</span> <span class="text-white font-bold">Granulated Grip Tape</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-blue block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            Renowned for outstanding 3-tap upper body multipliers. Remains a S-tier staple with excellent mid-range damage and ADS speed profiles.
+                        </div>
+                    </div>
+
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-purple/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-[#bf80ff]/10 text-cyber-purple px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">AGGRESSIVE SNIPER</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: ULTRA RAPID QUICKSCOPE</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">LW3-TUNDRA</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">28.2" Tiger Team Barrel</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">Raider Stock Spec</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-cyber-purple font-bold">7 Round Fast Loader</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">REAR GRIP:</span> <span class="text-white font-bold">Airborne Elastic Wrap</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">UNDERBARREL:</span> <span class="text-white font-bold">Bruiser Foregrip</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-purple block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            Widely considered the single most dominant sniper in competitive leagues. Features unmatched scope-in rates and massive body multipliers.
+                        </div>
+                    </div>
+
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-red/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-cyber-red/10 text-cyber-red px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">S-TIER SMG</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: RANGE HYBRID SMG</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">USS9</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">MUZZLE:</span> <span class="text-white font-bold">Monolithic Suppressor</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">YKM Light Stock</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">LASER:</span> <span class="text-cyber-red font-bold">OWC Laser - Tactical</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-white font-bold">45 Round Extended Mag</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">REAR GRIP:</span> <span class="text-white font-bold">Granulated Grip Tape</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-red block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            Offers highly consistent laser-like firing beams, elite mid-range TTK values, and supreme handling for highly aggressive entries.
+                        </div>
+                    </div>
+
+                    <div class="border border-zinc-800 bg-cyber-gray/30 rounded-2xl p-6 relative overflow-hidden group hover:border-cyber-blue/40 transition-all duration-300 flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 bg-cyber-blue/10 text-cyber-blue px-4 py-1 text-[10px] font-mono tracking-widest border-b border-l border-zinc-800 font-bold">2-TAP HEAVY METERS</div>
+                        <div>
+                            <span class="font-mono text-xs text-zinc-500 block">WEAPON CONFIG: DEVASTATING CALIBER AR</span>
+                            <h4 class="text-2xl font-black text-white tracking-wide mt-1">ODEN SYSTEM</h4>
+                            
+                            <div class="mt-6 space-y-2 border-t border-b border-zinc-900 py-4 font-mono text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">MUZZLE:</span> <span class="text-white font-bold">Colossus Suppressor</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">BARREL:</span> <span class="text-white font-bold">OWC Marksman Barrel</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">STOCK:</span> <span class="text-white font-bold">No Stock Component</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">LASER:</span> <span class="text-cyber-blue font-bold">OWC Laser - Tactical</span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">AMMUNITION:</span> <span class="text-white font-bold">Large Extended Mag B</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-black/60 border border-zinc-900 rounded p-3 text-[11px] font-mono text-zinc-400 leading-relaxed">
+                            <span class="text-cyber-blue block font-bold mb-1">// CODM GUNSMITH EVALUATION</span>
+                            Yields a devastating 2-tap head/chest time-to-kill limit. Optimal for locking down lanes, defensive angles, and heavily armored operatives.
                         </div>
                     </div>
 
@@ -317,24 +466,116 @@
             </div>
         </section>
 
+        <section id="contact-section" class="w-full bg-[#050508] py-20 px-6 border-t border-zinc-900 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col space-y-2 mb-12 items-center text-center">
+                    <span class="text-xs font-mono text-cyber-purple uppercase tracking-widest">// COMMUNICATIONS LINK</span>
+                    <h3 class="text-3xl font-black text-white tracking-tight uppercase">NEU FAMILY // LEADERSHIP MATRIX</h3>
+                    <div class="w-24 h-[2px] bg-cyber-purple"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <a href="https://t.me/wqath" target="_blank" class="block border border-zinc-800 bg-cyber-gray/40 rounded-xl p-6 hover:border-cyber-purple/60 hover:shadow-neon-purple/10 transition-all duration-300">
+                        <div class="text-xs font-mono text-zinc-500 mb-1">CLAN OWNER</div>
+                        <div class="text-lg font-bold text-white tracking-wide">@wqath</div>
+                        <div class="text-xs text-cyber-purple font-mono mt-3 flex items-center gap-1">ESTABLISH CHANNEL &rarr;</div>
+                    </a>
+                    <a href="https://t.me/iAmir_ho3sein" target="_blank" class="block border border-zinc-800 bg-cyber-gray/40 rounded-xl p-6 hover:border-cyber-purple/60 hover:shadow-neon-purple/10 transition-all duration-300">
+                        <div class="text-xs font-mono text-zinc-500 mb-1">OPERATIONS LEAD</div>
+                        <div class="text-lg font-bold text-white tracking-wide">@iAmir_ho3sein</div>
+                        <div class="text-xs text-cyber-purple font-mono mt-3 flex items-center gap-1">ESTABLISH CHANNEL &rarr;</div>
+                    </a>
+                    <a href="https://t.me/Alireza2008piri" target="_blank" class="block border border-zinc-800 bg-cyber-gray/40 rounded-xl p-6 hover:border-cyber-purple/60 hover:shadow-neon-purple/10 transition-all duration-300">
+                        <div class="text-xs font-mono text-zinc-500 mb-1">ADMINISTRATOR</div>
+                        <div class="text-lg font-bold text-white tracking-wide">@Alireza2008piri</div>
+                        <div class="text-xs text-cyber-purple font-mono mt-3 flex items-center gap-1">ESTABLISH CHANNEL &rarr;</div>
+                    </a>
+                    <a href="https://t.me/iWmmDz1" target="_blank" class="block border border-zinc-800 bg-cyber-gray/40 rounded-xl p-6 hover:border-cyber-purple/60 hover:shadow-neon-purple/10 transition-all duration-300">
+                        <div class="text-xs font-mono text-zinc-500 mb-1">COORDINATOR</div>
+                        <div class="text-lg font-bold text-white tracking-wide">@iWmmDz1</div>
+                        <div class="text-xs text-cyber-purple font-mono mt-3 flex items-center gap-1">ESTABLISH CHANNEL &rarr;</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </div>
 
 
-    <div id="rules-view" class="hidden min-h-screen bg-cyber-dark py-24 px-6 relative z-10 opacity-0 transition-all duration-500">
+    <div id="rules-view" class="hidden min-h-screen bg-cyber-dark py-12 px-6 relative z-10 opacity-0">
         <div class="max-w-5xl mx-auto">
             
-            <!-- Rules Beautiful Header with Dedicated Holographic Tactical Shader Canvas -->
-            <div class="relative w-full rounded-2xl overflow-hidden border border-zinc-800/80 bg-black/80 p-8 md:p-12 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 shadow-2xl min-h-[220px]">
+            <div class="relative w-full rounded-2xl overflow-hidden border border-zinc-800/80 bg-black/90 p-8 md:p-12 mb-12 flex flex-col justify-between shadow-2xl min-h-[380px]">
                 <canvas id="rules-canvas" class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 opacity-80"></canvas>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 z-0"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-black/60 z-0"></div>
                 
-                <div class="relative z-10 flex-grow">
-                    <span class="text-xs font-mono text-cyber-red tracking-widest block mb-2">// ƇȤ・FAMILY & NEU CLAN MUTUAL ACCORD</span>
-                    <h2 class="text-3xl md:text-4xl font-black text-white font-orbitron uppercase tracking-tight neon-text-red">COMPREHENSIVE COMPETITIVE WAR RESTRICTIONS</h2>
+                <div class="relative z-10 flex justify-between items-center border-b border-zinc-800/60 pb-4">
+                    <div class="flex items-center gap-2 font-mono text-[10px] text-cyber-red tracking-widest font-bold">
+                        <span class="w-2 h-2 bg-cyber-red rounded-full animate-ping"></span>
+                        SYSTEM PROTOCOL // BINDING DIRECTIVES
+                    </div>
+                    <div id="rules-header-right" class="flex items-center gap-3 md:gap-4 font-mono text-[10px] text-zinc-400">
+                        <span class="flex items-center gap-1">REVISION // <span class="text-white font-bold">04</span></span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="flex items-center gap-1">STATUS // <span class="text-cyber-red font-bold">STRICT</span></span>
+                    </div>
                 </div>
-                <div class="relative z-10 text-xs font-mono text-zinc-400 border border-zinc-800/80 p-4 rounded bg-cyber-dark/95 backdrop-blur-md shadow-lg min-w-[200px]">
-                    DOCUMENT REF: <span class="text-white font-bold">CZ-NEU-REGS-2026</span><br>
-                    SECURITY STATUS: <span class="text-cyber-red font-bold animate-pulse">BINDING RULES</span>
+
+                <div class="relative z-10 my-8 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="space-y-4 max-w-xl">
+                        <span class="text-xs font-mono text-cyber-red tracking-widest block uppercase">// NEU . Family DIRECTIVE PROTOCOLS</span>
+                        <h2 class="text-4xl md:text-6xl font-black text-white font-orbitron uppercase tracking-tight leading-none neon-text-red">
+                            COMPREHENSIVE<br>TACTICAL LAWS
+                        </h2>
+                        <p class="text-xs font-mono text-zinc-400 max-w-lg leading-relaxed">
+                            These structural rules serve as binding matrices for all official match circuits. Complete synchronization and discipline are strictly required during the lifecycle of the engagement.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-6 bg-black/50 border border-zinc-800 p-4 rounded-xl backdrop-blur-sm">
+                        <div class="relative w-24 h-24 rounded-full border border-cyber-red/30 flex items-center justify-center bg-black/70">
+                            <div class="absolute inset-1 border border-dashed border-cyber-red/20 rounded-full animate-spin" style="animation-duration: 8s;"></div>
+                            <div class="absolute inset-3 border border-zinc-800 rounded-full"></div>
+                            <div class="w-2 h-2 bg-cyber-red rounded-full animate-ping"></div>
+                            <div class="absolute inset-0 origin-center rounded-full radar-sweep-css" 
+                                 style="background: conic-gradient(from 0deg, rgba(255, 51, 51, 0.15) 0deg, rgba(255, 51, 51, 0) 90deg);"></div>
+                        </div>
+                        <div class="flex flex-col gap-1 font-mono text-[10px] text-zinc-400">
+                            <div>SECURE LEVEL: <span class="text-cyber-red font-bold">100% COMPLETE</span></div>
+                            <div>COMPLIANCE: <span class="text-white font-bold">STRICT CODM LAWS</span></div>
+                            <div>CHAMPIONSHIP: <span class="text-cyber-blue font-bold">ACTIVE PROTOCOL</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-zinc-800/60 text-[11px] font-mono">
+                    <div>
+                        <span class="block text-zinc-600 uppercase">REGIME</span>
+                        <span class="text-white font-bold">NEU・FAMILY</span>
+                    </div>
+                    <div>
+                        <span class="block text-zinc-600 uppercase">INTEGRITY MATRIX</span>
+                        <span class="text-cyber-red font-bold animate-pulse">100% SECURE</span>
+                    </div>
+                    <div>
+                        <span class="block text-zinc-600 uppercase">COMPLIANCE STATE</span>
+                        <span class="text-white">CODM META LAWS</span>
+                    </div>
+                    <div>
+                        <span class="block text-zinc-600 uppercase">DIRECTIVES ACTIVE</span>
+                        <span class="text-cyber-purple font-bold">08 CODIFIED BANS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-zinc-800 pb-8 mb-12 gap-4">
+                <div>
+                    <span class="text-xs font-mono text-cyber-red tracking-widest block mb-2">// NEU . Family & NEU CLAN MUTUAL ACCORD</span>
+                    <h2 class="text-3xl font-black text-white font-orbitron uppercase tracking-tight">COMPETITIVE WAR RESTRICTIONS</h2>
+                </div>
+                <div class="text-xs font-mono text-zinc-500 border border-zinc-800 p-3 rounded bg-black/40">
+                    DOCUMENT REF: <span class="text-white">NEU-REGS-2026</span><br>
+                    SECURITY STATUS: <span class="text-cyber-red font-bold">BINDING RULES</span>
                 </div>
             </div>
 
@@ -429,7 +670,32 @@
 
 
     <script>
-        // ================= ROSTER INITIALIZATION DATABASE =================
+        window.gsap = window.gsap || {
+            to: function(target, vars) {
+                const elements = typeof target === 'string' ? document.querySelectorAll(target) : (target.length ? target : [target]);
+                elements.forEach(el => {
+                    if (!el) return;
+                    if (vars.opacity !== undefined) el.style.opacity = vars.opacity;
+                    if (vars.y !== undefined) el.style.transform = `translateY(${vars.y}px)`;
+                    if (vars.x !== undefined) el.style.transform = `translateX(${vars.x}px)`;
+                    if (vars.scale !== undefined) el.style.transform = `scale(${vars.scale})`;
+                    if (vars.textShadow !== undefined) el.style.textShadow = vars.textShadow;
+                    if (vars.onComplete) setTimeout(vars.onComplete, (vars.duration || 0) * 1000);
+                });
+                return { kill: () => {} };
+            },
+            fromTo: function(target, fromVars, toVars) {
+                const elements = typeof target === 'string' ? document.querySelectorAll(target) : (target.length ? target : [target]);
+                elements.forEach(el => {
+                    if (!el) return;
+                    if (toVars.opacity !== undefined) el.style.opacity = toVars.opacity;
+                    if (toVars.y !== undefined) el.style.transform = `translateY(${toVars.y}px)`;
+                    if (toVars.onComplete) setTimeout(toVars.onComplete, (toVars.duration || 0) * 1000);
+                });
+                return { kill: () => {} };
+            }
+        };
+
         const NEU_ROSTER_DATABASE = [
             { name: "ƝЄU • ƊƩɅƬん", uid: "7309091456895877121", device: "A07", serial: "R8YYC", stats: { aim: 96, movement: 94, damage: 98, speed: 95 } },
             { name: "ƝЄU • GOLABI", uid: "7211883602408636417", device: "POCO X7PRO", serial: "61723", stats: { aim: 92, movement: 96, damage: 91, speed: 97 } },
@@ -443,28 +709,40 @@
             { name: "ƝЄU・MaMaD", uid: "6957495148956286977", device: "a24", serial: "R58W6", stats: { aim: 90, movement: 93, damage: 92, speed: 91 } }
         ];
 
-        const WEAPONS_CATALOG = ["DL Q33", "QQ9", "Kilo 141", "HS405", "MW11", "M4", "AK117", "Locust", "Switchblade X9", "Holger 26"];
-        const OPPONENT_TARGETS = ["X_Slayer_X", "ShadowOp", "Vortex_CZ", "GhostWalker", "ApexPredator", "BulletStorm", "Cipher_CODM", "Alpha_Actual", "Titanium_Fist", "Rogue_Wave"];
+        const WEAPONS_CATALOG = ["Switchblade X9", "QQ9", "VMP", "HS405", "MW11", "M4", "AK117", "Locus", "Kilo 141", "Holger 26"];
+        const OPPONENT_TARGETS = ["X_Slayer_X", "ShadowOp", "Vortex_NEU", "GhostWalker", "ApexPredator", "BulletStorm", "Cipher_CODM", "Alpha_Actual", "Titanium_Fist", "Rogue_Wave"];
 
-        // Global Parameters
         let webGlIntensity = 1.0;
         let intensityDecayTimeout;
 
-        // ================= CORE SYSTEM APPLICATION INITIALIZATION =================
         document.addEventListener("DOMContentLoaded", () => {
             initializeTerminalTypewriter();
             buildInteractiveRoster();
             startContinuousKillfeedEngine();
             initializeWebGLHero();
             initializeWebGLRules();
+            renderRulesHeader();
             setup3DNavigationAnimations();
             setupModalInteractions();
         });
 
-        // ================= COMPONENT 1: TERMINAL INTERACTION TYPEWRITER & SFX =================
+        function renderRulesHeader() {
+            const headerRight = document.getElementById("rules-header-right");
+            if (headerRight) {
+                headerRight.innerHTML = `
+                    <span class="flex items-center gap-1">REVISION // <span class="text-white font-bold">04</span></span>
+                    <span class="text-zinc-600">|</span>
+                    <span class="flex items-center gap-1">STATUS // <span class="text-cyber-red font-bold font-orbitron">STRICT</span></span>
+                `;
+                headerRight.classList.remove("hidden");
+                headerRight.style.display = "flex";
+            }
+        }
+
         function initializeTerminalTypewriter() {
             const logsContainer = document.getElementById("terminal-logs");
             const passkeyGate = document.getElementById("passkey-gate");
+            if (!logsContainer || !passkeyGate) return;
             
             const logSequences = [
                 "AUTHENTICATING SECURE CLAN MODULE...",
@@ -477,8 +755,31 @@
 
             let lineIndex = 0;
             let charIndex = 0;
+            let gateRevealed = false;
+
+            const failsafeTimeout = setTimeout(() => {
+                revealPasskeyGate();
+            }, 3000);
+
+            function revealPasskeyGate() {
+                if (gateRevealed) return;
+                gateRevealed = true;
+                clearTimeout(failsafeTimeout);
+                
+                logsContainer.innerHTML = "";
+                logSequences.forEach(line => {
+                    const p = document.createElement("p");
+                    p.className = "terminal-line";
+                    p.textContent = line;
+                    logsContainer.appendChild(p);
+                });
+                logsContainer.scrollTop = logsContainer.scrollHeight;
+
+                gsap.to(passkeyGate, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+            }
 
             function printLogCharacter() {
+                if (gateRevealed) return;
                 if (lineIndex < logSequences.length) {
                     if (charIndex === 0) {
                         const newParagraph = document.createElement("p");
@@ -487,7 +788,9 @@
                     }
                     
                     const currentLineElement = logsContainer.lastChild;
-                    currentLineElement.textContent += logSequences[lineIndex].charAt(charIndex);
+                    if (currentLineElement) {
+                        currentLineElement.textContent += logSequences[lineIndex].charAt(charIndex);
+                    }
                     charIndex++;
                     logsContainer.scrollTop = logsContainer.scrollHeight;
 
@@ -499,21 +802,20 @@
                         setTimeout(printLogCharacter, 250);
                     }
                 } else {
-                    // Logs fully rendered -> smoothly fade into passkey entry interface
-                    gsap.to(passkeyGate, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+                    revealPasskeyGate();
                 }
             }
 
             printLogCharacter();
 
-            // Setup Authorization Actions
             const decryptBtn = document.getElementById("decrypt-btn");
             const passkeyInput = document.getElementById("passkey-input");
-
-            decryptBtn.addEventListener("click", evaluateAuthorizationAttempt);
-            passkeyInput.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") evaluateAuthorizationAttempt();
-            });
+            if (decryptBtn && passkeyInput) {
+                decryptBtn.addEventListener("click", evaluateAuthorizationAttempt);
+                passkeyInput.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") evaluateAuthorizationAttempt();
+                });
+            }
         }
 
         function playSynthFallback(isSuccess) {
@@ -568,34 +870,37 @@
 
             if (inputVal === "neuralfam") {
                 processAudioFeedback(true);
-                errorMsg.style.opacity = "0";
+                if (errorMsg) errorMsg.style.opacity = "0";
                 
-                // Clear Security Overlay Shield Layer
                 gsap.to("#passkey-screen", {
                     y: "-100%",
                     opacity: 0,
                     duration: 0.8,
                     ease: "power4.inOut",
                     onComplete: () => {
-                        document.getElementById("passkey-screen").style.display = "none";
+                        const screen = document.getElementById("passkey-screen");
+                        if (screen) screen.style.display = "none";
                         const mainContent = document.getElementById("main-content");
-                        mainContent.classList.remove("opacity-0");
-                        gsap.fromTo(mainContent, { opacity: 0 }, { opacity: 1, duration: 1.2 });
-                        // Re-trigger layout parameters
+                        if (mainContent) {
+                            mainContent.classList.remove("opacity-0");
+                            gsap.fromTo(mainContent, { opacity: 0 }, { opacity: 1, duration: 1.2 });
+                        }
                         window.dispatchEvent(new Event('resize'));
                     }
                 });
             } else {
                 processAudioFeedback(false);
-                errorMsg.textContent = "DECRYPTION CODE INVALID. INTRUSION ALERT.";
-                errorMsg.style.opacity = "1";
+                if (errorMsg) {
+                    errorMsg.textContent = "DECRYPTION CODE INVALID. INTRUSION ALERT.";
+                    errorMsg.style.opacity = "1";
+                }
                 gsap.fromTo("#passkey-input", { x: -10 }, { x: 0, duration: 0.4, ease: "rough", clearProps: "x" });
             }
         }
 
-        // ================= COMPONENT 2: NATIVE WEBGL HERO SHADER PROTOCOLS =================
         function initializeWebGLHero() {
             const canvas = document.getElementById("hero-canvas");
+            if (!canvas) return;
             const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
             if (!gl) {
                 console.error("WebGL activation context unsupported in this system layer.");
@@ -616,153 +921,75 @@
                 uniform vec2 u_mouse;
                 uniform float u_intensity;
 
-                vec3 hash3(vec2 p) {
-                    vec3 q = vec3(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)), dot(p, vec2(419.2, 371.9)));
-                    return fract(sin(q) * 43758.5453);
+                float hash(vec2 p) {
+                    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
                 }
+
                 float noise(vec2 p) {
                     vec2 i = floor(p);
                     vec2 f = fract(p);
-                    vec2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
-                    return mix(mix(dot(hash3(i + vec2(0.0,0.0)).xy, f - vec2(0.0,0.0)), dot(hash3(i + vec2(1.0,0.0)).xy, f - vec2(1.0,0.0)), u.x),
-                               mix(dot(hash3(i + vec2(0.0,1.0)).xy, f - vec2(0.0,1.0)), dot(hash3(i + vec2(1.0,1.0)).xy, f - vec2(1.0,1.0)), u.x), u.y);
+                    vec2 u = f * f * (3.0 - 2.0 * f);
+                    return mix(mix(hash(i + vec2(0.0,0.0)), hash(i + vec2(1.0,0.0)), u.x),
+                               mix(hash(i + vec2(0.0,1.0)), hash(i + vec2(1.0,1.0)), u.x), u.y);
                 }
-                float fbm(vec2 p, int octaves) {
-                    float value = 0.0;
-                    float amplitude = 1.0;
-                    float frequency = 0.25;
-                    for(int i = 0; i < 10; i++) {
-                        if(i >= octaves) break;
-                        value += amplitude * noise(p * frequency);
-                        amplitude *= 0.52;
-                        frequency *= 1.13;
-                    }
-                    return value;
+
+                vec2 cheapFlow(vec2 p, float t) {
+                    float n1 = noise(p + vec2(t * 0.15, t * 0.1));
+                    float n2 = noise(p.yx - vec2(t * 0.1, -t * 0.15));
+                    return vec2(sin(n1 * 6.28), cos(n2 * 6.28)) * 0.35;
                 }
-                float voronoi(vec2 p) {
-                    vec2 n = floor(p);
-                    vec2 f = fract(p);
-                    float md = 50.0;
-                    for(int i = -2; i <= 2; i++) {
-                        for(int j = -2; j <= 2; j++) {
-                            vec2 g = vec2(i, j);
-                            vec2 o = hash3(n + g).xy;
-                            o = 0.5 + 0.41 * sin(u_time * 1.5 + 6.28 * o);
-                            vec2 r = g + o - f;
-                            float d = dot(r, r);
-                            md = min(md, d);
-                        }
-                    }
-                    return sqrt(md);
-                }
-                float plasma(vec2 p, float time) {
-                    float a = sin(p.x * 8.0 + time * 2.0);
-                    float b = sin(p.y * 8.0 + time * 1.7);
-                    float c = sin((p.x + p.y) * 6.0 + time * 1.3);
-                    float d = sin(sqrt(p.x * p.x + p.y * p.y) * 8.0 + time * 2.3);
-                    return (a + b + c + d) * 0.5;
-                }
-                vec2 curl(vec2 p, float time) {
-                    float eps = 0.5;
-                    float n1 = fbm(p + vec2(eps, 0.0), 6);
-                    float n2 = fbm(p - vec2(eps, 0.0), 6);
-                    float n3 = fbm(p + vec2(0.0, eps), 6);
-                    float n4 = fbm(p - vec2(0.0, eps), 6);
-                    return vec2((n3 - n4) / (2.0 * eps), (n2 - n1) / (2.0 * eps));
-                }
-                float grain(vec2 uv, float time) {
-                    vec2 seed = uv * time;
-                    return fract(sin(dot(seed, vec2(12.9898, 78.233))) * 43758.5453);
-                }
+
                 void main() {
                     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
                     vec2 st = (uv - 0.5) * 2.0;
                     st.x *= u_resolution.x / u_resolution.y;
-                    float time = u_time * 0.25;
-                    vec2 curlForce = curl(st * 2.0, time) * 0.6;
-                    vec2 flowField = st + curlForce;
-                    float dist1 = fbm(flowField * 1.5 + time * 1.2, 8) * 0.4;
-                    float dist2 = fbm(flowField * 2.3 - time * 0.8, 6) * 0.3;
-                    float dist3 = fbm(flowField * 3.1 + time * 1.8, 4) * 0.2;
-                    float dist4 = fbm(flowField * 4.7 - time * 1.1, 3) * 0.15;
-                    float cells = voronoi(flowField * 2.5 + time * 0.5);
-                    cells = smoothstep(0.1, 0.7, cells);
-                    float plasmaEffect = plasma(flowField + vec2(dist1, dist2), time * 1.5) * 0.2;
-                    float totalDist = dist1 + dist2 + dist3 + dist4 + plasmaEffect;
-                    float streak1 = sin((st.x + totalDist) * 15.0 + time * 3.0) * 0.5 + 0.5;
-                    float streak2 = sin((st.x + totalDist * 0.7) * 25.0 - time * 2.0) * 0.5 + 0.5;
-                    float streak3 = sin((st.x + totalDist * 1.3) * 35.0 + time * 4.0) * 0.5 + 0.5;
-                    streak1 = smoothstep(0.3, 0.7, streak1);
-                    streak2 = smoothstep(0.2, 0.8, streak2);
-                    streak3 = smoothstep(0.4, 0.6, streak3);
-                    float combinedStreaks = streak1 * 0.6 + streak2 * 0.4 + streak3 * 0.5;
-                    float shape1 = 1.0 - abs(st.x + totalDist * 0.6);
-                    float shape2 = 1.0 - abs(st.x + totalDist * 0.4 + sin(st.y * 3.0 + time) * 0.15);
-                    float shape3 = 1.0 - abs(st.x + totalDist * 0.8 + cos(st.y * 2.0 - time) * 0.1);
-                    shape1 = smoothstep(0.0, 1.0, shape1);
-                    shape2 = smoothstep(0.1, 0.9, shape2);
-                    shape3 = smoothstep(0.2, 0.8, shape3);
-                    float finalShape = max(shape1 * 0.8, max(shape2 * 0.6, shape3 * 0.4));
-                    vec3 color1 = vec3(1.0, 0.1, 0.6);
-                    vec3 color2 = vec3(1.0, 0.3, 0.1);
-                    vec3 color3 = vec3(0.9, 0.1, 1.0);
-                    vec3 color4 = vec3(0.1, 0.5, 1.0);
-                    vec3 color5 = vec3(0.1, 1.0, 0.9);
-                    vec3 color6 = vec3(0.3, 0.1, 0.9);
-                    vec3 color7 = vec3(1.0, 0.8, 0.1);
-                    float gradient = 1.0 - uv.y;
-                    float colorNoise = fbm(flowField * 3.0 + time * 0.5, 4) * 0.5 + 0.5;
-                    float colorShift = sin(time * 1.5 + st.y * 2.0) * 0.5 + 0.5;
-                    vec3 finalColor;
-                    float t1 = smoothstep(0.85, 1.0, gradient);
-                    float t2 = smoothstep(0.7, 0.85, gradient);
-                    float t3 = smoothstep(0.5, 0.7, gradient);
-                    float t4 = smoothstep(0.3, 0.5, gradient);
-                    float t5 = smoothstep(0.15, 0.3, gradient);
-                    float t6 = smoothstep(0.0, 0.15, gradient);
-                    finalColor = mix(color6, color7, t6);
-                    finalColor = mix(finalColor, color5, t5);
-                    finalColor = mix(finalColor, color4, t4);
-                    finalColor = mix(finalColor, color3, t3);
-                    finalColor = mix(finalColor, color2, t2);
-                    finalColor = mix(finalColor, color1, t1);
-                    finalColor = mix(finalColor, color1, colorNoise * 0.82);
-                    finalColor = mix(finalColor, color5, colorShift * 0.5);
-                    vec2 aberration = curlForce * 0.02;
-                    vec3 aberrationColor = finalColor;
-                    aberrationColor.r = mix(finalColor.r, color1.r, length(aberration) * 2.0);
-                    aberrationColor.b = mix(finalColor.b, color4.b, length(aberration) * 1.5);
-                    aberrationColor.g = mix(finalColor.g, color5.g, length(aberration) * 1.2);
-                    float pulse1 = sin(time * 3.0 + st.y * 6.0) * 0.5 + 0.5;
-                    float pulse2 = sin(time * 4.5 - st.y * 8.0) * 0.5 + 0.5;
-                    float energyPulse = smoothstep(0.3, 0.7, pulse1 * pulse2);
-                    float intensity = finalShape * combinedStreaks * (1.0 + energyPulse * 0.4);
-                    intensity *= (1.0 + cells * 0.2);
-                    intensity *= u_intensity;
+
+                    float time = u_time * 0.22;
+
+                    vec2 flow = cheapFlow(st * 1.6, time);
+                    vec2 coord = st + flow;
+
+                    float dist = noise(coord * 2.2 + vec2(time * 0.4, -time * 0.3)) * 0.25;
+                    dist += noise(coord * 4.5 - vec2(time * 0.2, time * 0.4)) * 0.12;
+
+                    float streak = sin((st.x + dist) * 11.0 + time * 1.8) * 0.5 + 0.5;
+                    streak = smoothstep(0.18, 0.82, streak);
+
+                    vec3 colorHotPink = vec3(1.0, 0.1, 0.55);
+                    vec3 colorPurple = vec3(0.85, 0.1, 1.0);
+                    vec3 colorElectricBlue = vec3(0.1, 0.45, 1.0);
+                    vec3 colorCyan = vec3(0.1, 0.95, 0.85);
+                    vec3 colorDeepPurple = vec3(0.18, 0.05, 0.6);
+
+                    float grad = 1.0 - uv.y;
+                    vec3 finalColor = mix(colorDeepPurple, colorElectricBlue, smoothstep(0.0, 0.42, grad));
+                    finalColor = mix(finalColor, colorPurple, smoothstep(0.42, 0.72, grad));
+                    finalColor = mix(finalColor, colorHotPink, smoothstep(0.72, 1.0, grad));
+
+                    float colorNoise = noise(coord * 3.2 + time) * 0.45;
+                    finalColor = mix(finalColor, colorCyan, colorNoise * 0.28);
+
+                    float intensity = streak * 0.82 * u_intensity;
+
                     vec2 mouse = u_mouse / u_resolution.xy;
                     mouse = (mouse - 0.5) * 2.0;
                     mouse.x *= u_resolution.x / u_resolution.y;
-                    float mouseInfluence = 1.0 - length(st - mouse) * 0.6;
-                    mouseInfluence = max(0.0, mouseInfluence);
-                    mouseInfluence = smoothstep(0.0, 1.0, mouseInfluence);
-                    intensity += mouseInfluence * 0.6;
-                    aberrationColor = mix(aberrationColor, color1, 0.3);
-                    vec3 result = aberrationColor * intensity;
-                    float bloom = smoothstep(0.4, 1.0, intensity) * 0.54;
-                    result += bloom * finalColor;
-                    result = pow(result, vec3(0.85));
-                    result = mix(result, result * result, 0.2);
-                    float vignette = 1.0 - length(uv - 0.5) * 0.85;
-                    vignette = smoothstep(0.2, 1.0, vignette);
-                    vec3 bgColor = vec3(0.02, 0.01, 0.12) + finalColor * 0.03;
-                    result = mix(bgColor, result, smoothstep(0.0, 0.4, intensity));
+                    float mouseDist = length(st - mouse);
+                    float mouseInfluence = smoothstep(0.75, 0.0, mouseDist);
+                    intensity += mouseInfluence * 0.32;
+
+                    vec3 result = finalColor * intensity;
+
+                    vec3 bgColor = vec3(0.01, 0.005, 0.06) + finalColor * 0.022;
+                    result = mix(bgColor, result, smoothstep(0.0, 0.35, intensity));
+
+                    float vignette = uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y);
+                    vignette = clamp(pow(16.0 * vignette, 0.42), 0.0, 1.0);
                     result *= vignette;
-                    result = mix(vec3(dot(result, vec3(0.299, 0.587, 0.114))), result, 1.3);
-                    float grainAmount = 0.11;
-                    float grainValue = grain(uv, time * 0.5) * 2.0 - 1.0;
-                    result += grainValue * grainAmount;
-                    float scanline = sin(uv.y * u_resolution.y * 2.0) * 0.04;
-                    result += scanline;
+
+                    float grain = fract(sin(dot(uv * (time + 1.0), vec2(12.9898, 78.233))) * 43758.5453);
+                    result += (grain - 0.5) * 0.045;
+
                     gl_FragColor = vec4(result, 1.0);
                 }
             `;
@@ -772,7 +999,6 @@
                 gl.shaderSource(shader, source);
                 gl.compileShader(shader);
                 if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-                    console.error("Shader calculation exception detected:", gl.getShaderInfoLog(shader));
                     gl.deleteShader(shader);
                     return null;
                 }
@@ -781,13 +1007,17 @@
 
             const vs = loadShader(gl, gl.VERTEX_SHADER, vertexShaderSrc);
             const fs = loadShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSrc);
+            if (!vs || !fs) {
+                console.error("WebGL Shader compilation failed.");
+                return;
+            }
+
             const program = gl.createProgram();
             gl.attachShader(program, vs);
             gl.attachShader(program, fs);
             gl.linkProgram(program);
 
             if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-                console.error("WebGL core allocation linker exception:", gl.getProgramInfoLog(program));
                 return;
             }
 
@@ -820,18 +1050,18 @@
 
             window.addEventListener("resize", resizeCanvas);
             function resizeCanvas() {
-                canvas.width = canvas.clientWidth;
-                canvas.height = canvas.clientHeight;
+                const dpr = Math.min(window.devicePixelRatio, 1.5);
+                canvas.width = canvas.clientWidth * dpr;
+                canvas.height = canvas.clientHeight * dpr;
                 gl.viewport(0, 0, canvas.width, canvas.height);
             }
             resizeCanvas();
 
             window.addEventListener("mousemove", (e) => {
                 const rect = canvas.getBoundingClientRect();
-                mouseX = e.clientX - rect.left;
-                mouseY = rect.height - (e.clientY - rect.top); // Flip Y matrix alignment
+                mouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
+                mouseY = (rect.height - (e.clientY - rect.top)) * (canvas.height / rect.height);
                 
-                // Boost intensity metric on rapid input tracking activity
                 webGlIntensity = 1.15;
                 clearTimeout(intensityDecayTimeout);
                 intensityDecayTimeout = setTimeout(() => {
@@ -844,19 +1074,19 @@
             });
 
             function renderEngineLoop(time) {
-                gl.clear(gl.COLOR_BUFFER_BIT);
-                gl.uniform1f(uTime, time * 0.001);
-                gl.uniform2f(uResolution, canvas.width, canvas.height);
-                gl.uniform2f(uMouse, mouseX, mouseY);
-                gl.uniform1f(uIntensity, webGlIntensity);
-
-                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                if (canvas.offsetParent !== null) {
+                    gl.clear(gl.COLOR_BUFFER_BIT);
+                    gl.uniform1f(uTime, time * 0.001);
+                    gl.uniform2f(uResolution, canvas.width, canvas.height);
+                    gl.uniform2f(uMouse, mouseX, mouseY);
+                    gl.uniform1f(uIntensity, webGlIntensity);
+                    gl.drawArrays(gl.TRIANGLES, 0, 6);
+                }
                 requestAnimationFrame(renderEngineLoop);
             }
             requestAnimationFrame(renderEngineLoop);
         }
 
-        // ================= COMPONENT 2B: WEBGL RULES HEADER SHADER (TACTICAL SECURITY MATRIX) =================
         function initializeWebGLRules() {
             const canvas = document.getElementById("rules-canvas");
             if (!canvas) return;
@@ -879,14 +1109,6 @@
                     return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
                 }
 
-                float noise(vec2 p) {
-                    vec2 i = floor(p);
-                    vec2 f = fract(p);
-                    vec2 u = f * f * (3.0 - 2.0 * f);
-                    return mix(mix(hash(i + vec2(0.0,0.0)), hash(i + vec2(1.0,0.0)), u.x),
-                               mix(hash(i + vec2(0.0,1.0)), hash(i + vec2(1.0,1.0)), u.x), u.y);
-                }
-
                 void main() {
                     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
                     vec2 st = (uv - 0.5) * 2.0;
@@ -894,46 +1116,42 @@
 
                     float time = u_time * 0.4;
 
-                    // Radar/hologram rotation components
                     float angle = atan(st.y, st.x);
                     float dist = length(st);
 
-                    // Dynamic tactical grid alignment
-                    vec2 grid = sin(st * 16.0 - vec2(0.0, time * 1.5));
-                    float gridVal = smoothstep(0.96, 0.99, max(grid.x, grid.y)) * 0.25;
+                    float sweep = sin(angle - time * 1.5) * 0.5 + 0.5;
+                    sweep = pow(sweep, 12.0) * smoothstep(1.0, 0.0, dist);
 
-                    // Continuous radar sweeping logic
-                    float sweep = sin(angle - time * 1.2) * 0.5 + 0.5;
-                    sweep = pow(sweep, 12.0) * smoothstep(1.2, 0.0, dist);
+                    vec2 grid = abs(fract(st * 12.0 - vec2(0.0, time * 0.5)) - 0.5);
+                    float gridVal = smoothstep(0.48, 0.5, max(grid.x, grid.y));
+                    gridVal = (1.0 - gridVal) * 0.12;
 
-                    // Glowing concentric HUD circles (dashing applied)
-                    float ring1 = smoothstep(0.015, 0.0, abs(dist - 0.35));
+                    float ring1 = smoothstep(0.015, 0.0, abs(dist - 0.4));
                     float ring2 = smoothstep(0.01, 0.0, abs(dist - 0.65));
-                    float dashes1 = step(0.15, fract(angle * 6.0 / 3.14159));
-                    float dashes2 = step(0.3, fract(angle * 3.0 / 3.14159));
-                    float hud = (ring1 * dashes1 + ring2 * dashes2) * 0.35;
+                    float ring3 = smoothstep(0.008, 0.0, abs(dist - 0.2));
+                    
+                    float dashes1 = step(0.12, fract(angle * 8.0 / 3.14159));
+                    float dashes2 = step(0.2, fract(angle * 3.0 / 3.14159));
+                    
+                    float hud = (ring1 * dashes1 + ring2 * dashes2 + ring3) * 0.35;
 
-                    // Organic cyber-ripple effect
-                    float plasma = noise(st * 3.0 + vec2(0.0, -time)) * 0.3;
+                    float indicators = 0.0;
+                    indicators += step(abs(st.x), 0.01) * step(abs(st.y), 0.7) * 0.2;
+                    indicators += step(abs(st.y), 0.01) * step(abs(st.x), 0.7) * 0.2;
+                    indicators *= smoothstep(0.7, 0.0, dist);
 
-                    // Scanning line beam
-                    float beam = smoothstep(0.985, 0.999, sin(uv.y * 3.14159 - time * 0.8));
-
-                    // Cyber red palette blending
-                    vec3 bgColor = vec3(0.01, 0.0, 0.03);
-                    vec3 coreColor = vec3(0.9, 0.1, 0.15); // Crimson Cyber
-                    vec3 cyanAccent = vec3(0.1, 0.6, 0.9); // Secondary glow
+                    vec3 bgColor = vec3(0.01, 0.002, 0.02);
+                    vec3 neonRed = vec3(1.0, 0.12, 0.15);
+                    vec3 cyberBlue = vec3(0.1, 0.7, 1.0);
 
                     vec3 finalColor = bgColor;
-                    finalColor += coreColor * (gridVal + sweep * 0.5 + plasma * 0.4 + beam * 0.7);
-                    finalColor += mix(coreColor, cyanAccent, 0.3) * hud;
+                    finalColor += neonRed * (gridVal + sweep * 0.4 + hud + indicators);
+                    finalColor += cyberBlue * (hud * 0.15);
 
-                    // Digital noise grain
-                    finalColor += vec3(hash(uv + time)) * 0.07;
+                    finalColor += vec3(hash(uv + time)) * 0.05;
 
-                    // Soft vignette
                     float vignette = uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y);
-                    vignette = clamp(pow(16.0 * vignette, 0.4), 0.0, 1.0);
+                    vignette = clamp(pow(16.0 * vignette, 0.45), 0.0, 1.0);
                     finalColor *= vignette;
 
                     gl_FragColor = vec4(finalColor, 1.0);
@@ -953,6 +1171,11 @@
 
             const vs = loadShader(gl, gl.VERTEX_SHADER, vertexShaderSrc);
             const fs = loadShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSrc);
+            if (!vs || !fs) {
+                console.error("WebGL Rules Shader compilation failed.");
+                return;
+            }
+
             const program = gl.createProgram();
             gl.attachShader(program, vs);
             gl.attachShader(program, fs);
@@ -986,14 +1209,14 @@
 
             window.addEventListener("resize", resizeRulesCanvas);
             function resizeRulesCanvas() {
-                canvas.width = canvas.clientWidth;
-                canvas.height = canvas.clientHeight;
+                const dpr = Math.min(window.devicePixelRatio, 1.2);
+                canvas.width = canvas.clientWidth * dpr;
+                canvas.height = canvas.clientHeight * dpr;
                 gl.viewport(0, 0, canvas.width, canvas.height);
             }
             resizeRulesCanvas();
 
             function renderEngineLoop(time) {
-                // Render rules shader frame only if parent rules element is visible
                 if (canvas.offsetParent !== null) {
                     gl.clear(gl.COLOR_BUFFER_BIT);
                     gl.uniform1f(uTime, time * 0.001);
@@ -1005,7 +1228,6 @@
             requestAnimationFrame(renderEngineLoop);
         }
 
-        // ================= COMPONENT 3: MENU MATRIX 3D GSAP ANIMATION =================
         function setup3DNavigationAnimations() {
             const navLinks = document.querySelectorAll(".nav-large-link");
             navLinks.forEach(link => {
@@ -1033,12 +1255,12 @@
             });
         }
 
-        // ================= COMPONENT 4: LIVE KILLFEED SIMULATION REACTOR =================
         function startContinuousKillfeedEngine() {
             const feedContainer = document.getElementById("killfeed-container");
+            if (!feedContainer) return;
             
             function spawnKillEvent() {
-                if (document.hidden) return; // Halt activity if browser tab is processing background loops
+                if (document.hidden) return;
                 
                 const activePlayer = NEU_ROSTER_DATABASE[Math.floor(Math.random() * NEU_ROSTER_DATABASE.length)].name;
                 const activeWeapon = WEAPONS_CATALOG[Math.floor(Math.random() * WEAPONS_CATALOG.length)];
@@ -1056,7 +1278,6 @@
                 feedContainer.appendChild(feedRow);
                 gsap.to(feedRow, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" });
 
-                // Cycle management engine to clear over-indexed terminal logs
                 const currentRows = feedContainer.querySelectorAll(".killfeed-item");
                 if (currentRows.length > 5) {
                     const oldestItem = currentRows[0];
@@ -1070,10 +1291,10 @@
             setInterval(spawnKillEvent, 2200);
         }
 
-        // ================= COMPONENT 5: DYNAMIC ROSTER MATRIX RENDERER =================
         function buildInteractiveRoster() {
             const grid = document.getElementById("roster-grid");
-            grid.innerHTML = ""; // Force absolute clean render frame
+            if (!grid) return;
+            grid.innerHTML = "";
 
             NEU_ROSTER_DATABASE.forEach((operative, idx) => {
                 const card = document.createElement("div");
@@ -1097,11 +1318,11 @@
             });
         }
 
-        // ================= COMPONENT 6: INTERACTIVE DATA DOSSIER INTERNALS =================
         function displayTacticalDossier(index) {
             const operative = NEU_ROSTER_DATABASE[index];
             const contentZone = document.getElementById("dossier-content");
             const modalFrame = document.getElementById("dossier-modal");
+            if (!contentZone || !modalFrame) return;
 
             contentZone.innerHTML = `
                 <div class="flex flex-col space-y-1">
@@ -1113,7 +1334,7 @@
                     <div><span class="text-zinc-600 block">UID MATRIX ASSIGNMENT</span><span class="text-white select-all">${operative.uid}</span></div>
                     <div><span class="text-zinc-600 block">HARDWARE PROVISION</span><span class="text-white uppercase">${operative.device}</span></div>
                     <div><span class="text-zinc-600 block">SERIAL SYSTEM LOG</span><span class="text-cyber-blue">${operative.serial}</span></div>
-                    <div><span class="text-zinc-600 block">REGIME ASSIGNMENT</span><span class="text-cyber-purple">NEU CLAN x CZ</span></div>
+                    <div><span class="text-zinc-600 block">REGIME ASSIGNMENT</span><span class="text-cyber-purple">NEU CLAN x NEU . Family</span></div>
                 </div>
 
                 <div class="space-y-4 pt-2">
@@ -1149,13 +1370,13 @@
                 </div>
             `;
 
-            // Display Frame
             modalFrame.classList.remove("hidden");
             setTimeout(() => {
                 modalFrame.classList.add("opacity-100");
-                modalFrame.firstElementChild.classList.remove("scale-95");
+                if (modalFrame.firstElementChild) {
+                    modalFrame.firstElementChild.classList.remove("scale-95");
+                }
                 
-                // Animate progress parameters post rendering sequence
                 const targetBars = contentZone.querySelectorAll(".dossier-progress-bar");
                 targetBars.forEach(bar => {
                     bar.style.width = bar.getAttribute("data-width");
@@ -1166,10 +1387,13 @@
         function setupModalInteractions() {
             const modalFrame = document.getElementById("dossier-modal");
             const closeBtn = document.getElementById("modal-close");
+            if (!modalFrame || !closeBtn) return;
 
             function dismissModal() {
                 modalFrame.classList.remove("opacity-100");
-                modalFrame.firstElementChild.classList.add("scale-95");
+                if (modalFrame.firstElementChild) {
+                    modalFrame.firstElementChild.classList.add("scale-95");
+                }
                 setTimeout(() => {
                     modalFrame.classList.add("hidden");
                 }, 300);
@@ -1181,16 +1405,17 @@
             });
         }
 
-        // ================= COMPONENT 7: VIEW CONTROLLER & ROUTING PROTOCOLS =================
         function switchToHome() {
+            const mainContent = document.getElementById("main-content");
             const homeView = document.getElementById("home-view");
-            const killfeedSect = document.getElementById("killfeed-anchor").parentElement;
-            const rosterSect = document.getElementById("roster-anchor").nextElementSibling.previousElementSibling;
-            const weaponSect = document.getElementById("weapon-anchor").nextElementSibling.previousElementSibling;
+            const killfeedSect = document.getElementById("killfeed-anchor") ? document.getElementById("killfeed-anchor").parentElement : null;
+            const rosterSect = document.getElementById("roster-anchor") ? document.getElementById("roster-anchor").nextElementSibling : null;
+            const weaponSect = document.getElementById("weapon-anchor") ? document.getElementById("weapon-anchor").nextElementSibling : null;
+            const contactSect = document.getElementById("contact-section");
             
             const rulesView = document.getElementById("rules-view");
+            if (!homeView || !rulesView) return;
 
-            // Update Floating Dock Visual Architecture States
             document.getElementById("dock-home-btn").classList.add("text-cyber-purple");
             document.getElementById("dock-home-btn").classList.remove("text-zinc-500");
             document.getElementById("dock-home-indicator").classList.remove("hidden");
@@ -1199,35 +1424,41 @@
             document.getElementById("dock-rules-btn").classList.add("text-zinc-500");
             document.getElementById("dock-rules-indicator").classList.add("hidden");
 
-            // Smooth crossfade interaction transition execution
             gsap.to(rulesView, { opacity: 0, duration: 0.4, onComplete: () => {
                 rulesView.classList.add("hidden");
                 
+                if (mainContent) {
+                    mainContent.classList.remove("hidden");
+                    mainContent.style.opacity = "1";
+                }
+                
                 homeView.classList.remove("hidden");
-                killfeedSect.classList.remove("hidden");
-                document.getElementById("roster-anchor").classList.remove("hidden");
-                document.getElementById("roster-anchor").nextElementSibling.classList.remove("hidden");
-                document.getElementById("weapon-anchor").classList.remove("hidden");
-                document.getElementById("weapon-anchor").nextElementSibling.classList.remove("hidden");
+                if (killfeedSect) killfeedSect.classList.remove("hidden");
+                if (document.getElementById("roster-anchor")) document.getElementById("roster-anchor").classList.remove("hidden");
+                if (rosterSect) rosterSect.classList.remove("hidden");
+                if (document.getElementById("weapon-anchor")) document.getElementById("weapon-anchor").classList.remove("hidden");
+                if (weaponSect) weaponSect.classList.remove("hidden");
+                if (contactSect) contactSect.classList.remove("hidden");
 
-                gsap.fromTo([homeView, killfeedSect, document.getElementById("roster-anchor").nextElementSibling, document.getElementById("weapon-anchor").nextElementSibling], 
+                gsap.fromTo([homeView, killfeedSect, rosterSect, weaponSect, contactSect].filter(Boolean), 
                     { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.1 });
                 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                // Force sync update execution to WebGL viewport size limits
                 window.dispatchEvent(new Event('resize'));
             }});
         }
 
         function switchToRules() {
+            const mainContent = document.getElementById("main-content");
             const homeView = document.getElementById("home-view");
-            const killfeedSect = document.getElementById("killfeed-anchor").parentElement;
-            const rosterSect = document.getElementById("roster-anchor").nextElementSibling;
-            const weaponSect = document.getElementById("weapon-anchor").nextElementSibling;
+            const killfeedSect = document.getElementById("killfeed-anchor") ? document.getElementById("killfeed-anchor").parentElement : null;
+            const rosterSect = document.getElementById("roster-anchor") ? document.getElementById("roster-anchor").nextElementSibling : null;
+            const weaponSect = document.getElementById("weapon-anchor") ? document.getElementById("weapon-anchor").nextElementSibling : null;
+            const contactSect = document.getElementById("contact-section");
             
             const rulesView = document.getElementById("rules-view");
+            if (!homeView || !rulesView) return;
 
-            // Update Floating Dock Visual Architecture States
             document.getElementById("dock-home-btn").classList.remove("text-cyber-purple");
             document.getElementById("dock-home-btn").classList.add("text-zinc-500");
             document.getElementById("dock-home-indicator").classList.add("hidden");
@@ -1236,20 +1467,23 @@
             document.getElementById("dock-rules-btn").classList.remove("text-zinc-500");
             document.getElementById("dock-rules-indicator").classList.remove("hidden");
 
-            // Smooth crossfade interaction transition execution
-            gsap.to([homeView, killfeedSect, rosterSect, weaponSect, document.getElementById("roster-anchor"), document.getElementById("weapon-anchor")], { 
+            gsap.to([homeView, killfeedSect, rosterSect, weaponSect, contactSect, document.getElementById("roster-anchor"), document.getElementById("weapon-anchor")].filter(Boolean), { 
                 opacity: 0, duration: 0.4, onComplete: () => {
+                    if (mainContent) mainContent.classList.add("hidden");
+                    
                     homeView.classList.add("hidden");
-                    killfeedSect.classList.add("hidden");
-                    document.getElementById("roster-anchor").classList.add("hidden");
-                    rosterSect.classList.add("hidden");
-                    document.getElementById("weapon-anchor").classList.add("hidden");
-                    weaponSect.classList.add("hidden");
+                    if (killfeedSect) killfeedSect.classList.add("hidden");
+                    if (document.getElementById("roster-anchor")) document.getElementById("roster-anchor").classList.add("hidden");
+                    if (rosterSect) rosterSect.classList.add("hidden");
+                    if (document.getElementById("weapon-anchor")) document.getElementById("weapon-anchor").classList.add("hidden");
+                    if (weaponSect) weaponSect.classList.add("hidden");
+                    if (contactSect) contactSect.classList.add("hidden");
 
                     rulesView.classList.remove("hidden");
+                    renderRulesHeader(); 
+                    
                     gsap.fromTo(rulesView, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    // Trigger canvas resize context update for rules viewport
                     window.dispatchEvent(new Event('resize'));
                 }
             });
